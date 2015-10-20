@@ -520,6 +520,7 @@
 				4C9AC9E21BD6E98B0013519A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
