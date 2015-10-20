@@ -7,17 +7,43 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    var items: [String] = ["We", "Heart", "Swift"]
+    var items: [NSDictionary] = []// = ["We", "Heart", "Swift"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
+        Alamofire.request(.GET, "http://192.168.1.29:8080/json.htm?type=devices&filter=all&used=true&order=Name")
+            .responseJSON { response in
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)   // result of response serialization
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                    
+                    if let result = JSON["result"] as? NSArray {
+                        for item in result {
+                            let obj = item as? NSDictionary
+                            if let isFavorite = obj?.objectForKey("Favorite") {
+                                if (isFavorite.integerValue == 1) {
+                                    self.items.append(obj!)
+                                    print(obj)
+                                }
+                            }
+                        }
+                    }
+                    
+                    self.tableView.reloadData()
+
+                }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,10 +63,34 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath) as UITableViewCell!
+        cell.textLabel?.text = self.items[indexPath.row].objectForKey("Name") as? String
+        let data = self.items[indexPath.row].objectForKey("Data") as? String
         
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell?
+        cell.detailTextLabel?.text = data
         
-        cell!.textLabel?.text = self.items[indexPath.row]
+        
+        if (self.items[indexPath.row].objectForKey("TypeImg") as? String == "lightbulb") {
+            print("row: \(cell.textLabel?.text) light : \(data)")
+        }
+        else if (self.items[indexPath.row].objectForKey("TypeImg") as? String == "temperature") {
+            print("row: \(cell.textLabel?.text) temp : \(data)")
+
+        }
+        
+         /*
+        let dic = self.items[indexPath.row] as [String:AnyObject]
+        cell!.textLabel?.text = dic.objectForKey("name")
+        
+       
+        if dic = self.items[indexPath.row] {
+            if let name = dic.objectForKey("name") as String {
+                cell!.textLabel?.text = name
+            }
+        }
+*/
+
         
         return cell!
         
