@@ -77,9 +77,14 @@
                                 <segment title="Favorites"/>
                             </segments>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="gwS-hs-qg0"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="gwS-hs-qg0">
+                            <connections>
+                                <action selector="refreshData:" destination="BYZ-38-t0r" id="MxJ-77-5cI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ReloadButton" destination="gwS-hs-qg0" id="JV4-Tp-LO7"/>
                         <outlet property="tableView" destination="lij-N3-xng" id="EQg-ub-Ajn"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="GXa-3b-JyZ"/>
                     </connections>

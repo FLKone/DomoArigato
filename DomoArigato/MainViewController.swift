@@ -11,39 +11,16 @@ import Alamofire
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var ReloadButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     var items: [NSDictionary] = []// = ["We", "Heart", "Swift"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        Alamofire.request(.GET, "http://192.168.1.29:8080/json.htm?type=devices&filter=all&used=true&order=Name")
-            .responseJSON { response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
-                print(response.data)     // server data
-                print(response.result)   // result of response serialization
-                
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
-                    
-                    if let result = JSON["result"] as? NSArray {
-                        for item in result {
-                            let obj = item as? NSDictionary
-                            if let isFavorite = obj?.objectForKey("Favorite") {
-                                if (isFavorite.integerValue == 1) {
-                                    self.items.append(obj!)
-                                    print(obj)
-                                }
-                            }
-                        }
-                    }
-                    
-                    self.tableView.reloadData()
-
-                }
-        }
+        
+        self.refreshData(nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,6 +81,36 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
 
+    @IBAction func refreshData(sender: AnyObject?) {
+        print("refreshData from \(sender)")
+        
+        Alamofire.request(.GET, "http://192.168.1.29:8080/json.htm?type=devices&filter=all&used=true&order=Name")
+            .responseJSON { response in
+                //print(response.request)  // original URL request
+                //print(response.response) // URL response
+                //print(response.data)     // server data
+                //print(response.result)   // result of response serialization
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                    
+                    if let result = JSON["result"] as? NSArray {
+                        for item in result {
+                            let obj = item as? NSDictionary
+                            if let isFavorite = obj?.objectForKey("Favorite") {
+                                if (isFavorite.integerValue == 1) {
+                                    self.items.append(obj!)
+                                    //print(obj)
+                                }
+                            }
+                        }
+                    }
+                    
+                    self.tableView.reloadData()
+                    
+                }
+        }
+    }
     
     
 }
