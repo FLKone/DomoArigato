@@ -84,6 +84,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func refreshData(sender: AnyObject?) {
         print("refreshData from \(sender)")
         
+        self.items.removeAll()
+        
         Alamofire.request(.GET, "http://192.168.1.29:8080/json.htm?type=devices&filter=all&used=true&order=Name")
             .responseJSON { response in
                 //print(response.request)  // original URL request
