@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C27B2991BD6BD5C002D4E90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */; };
-		4C27B29B1BD6BD5C002D4E90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29A1BD6BD5C002D4E90 /* ViewController.swift */; };
+		4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */; };
 		4C27B29E1BD6BD5C002D4E90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */; };
 		4C27B2A11BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */; };
 		4C27B2A31BD6BD5C002D4E90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */; };
@@ -18,7 +18,7 @@
 /* Begin PBXFileReference section */
 		4C27B2951BD6BD5C002D4E90 /* DomoArigato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DomoArigato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C27B29A1BD6BD5C002D4E90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4C27B29D1BD6BD5C002D4E90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C27B2A01BD6BD5C002D4E90 /* DomoArigato.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DomoArigato.xcdatamodel; sourceTree = "<group>"; };
 		4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */,
-				4C27B29A1BD6BD5C002D4E90 /* ViewController.swift */,
+				4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */,
 				4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */,
 				4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */,
 				4C27B2A41BD6BD5C002D4E90 /* LaunchScreen.storyboard */,
@@ -98,6 +98,7 @@
 				TargetAttributes = {
 					4C27B2941BD6BD5C002D4E90 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 4Z4VCUMET3;
 					};
 				};
 			};
@@ -138,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C27B2A11BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld in Sources */,
-				4C27B29B1BD6BD5C002D4E90 /* ViewController.swift in Sources */,
+				4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */,
 				4C27B2991BD6BD5C002D4E90 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +253,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = DomoArigato/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flkone.DomoArigato;
@@ -263,6 +265,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = DomoArigato/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flkone.DomoArigato;
@@ -289,6 +292,7 @@
 				4C27B2AC1BD6BD5C002D4E90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
