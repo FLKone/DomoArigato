@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C27B2991BD6BD5C002D4E90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */; };
+		4C27B29B1BD6BD5C002D4E90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29A1BD6BD5C002D4E90 /* ViewController.swift */; };
+		4C27B29E1BD6BD5C002D4E90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */; };
+		4C27B2A11BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */; };
+		4C27B2A31BD6BD5C002D4E90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */; };
+		4C27B2A61BD6BD5C002D4E90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B2A41BD6BD5C002D4E90 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4C27B2951BD6BD5C002D4E90 /* DomoArigato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DomoArigato.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4C27B29A1BD6BD5C002D4E90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4C27B29D1BD6BD5C002D4E90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4C27B2A01BD6BD5C002D4E90 /* DomoArigato.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DomoArigato.xcdatamodel; sourceTree = "<group>"; };
+		4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C27B2A51BD6BD5C002D4E90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4C27B2A71BD6BD5C002D4E90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C27B2921BD6BD5C002D4E90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C27B28C1BD6BD5C002D4E90 = {
+			isa = PBXGroup;
+			children = (
+				4C27B2971BD6BD5C002D4E90 /* DomoArigato */,
+				4C27B2961BD6BD5C002D4E90 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4C27B2961BD6BD5C002D4E90 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C27B2951BD6BD5C002D4E90 /* DomoArigato.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C27B2971BD6BD5C002D4E90 /* DomoArigato */ = {
+			isa = PBXGroup;
+			children = (
+				4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */,
+				4C27B29A1BD6BD5C002D4E90 /* ViewController.swift */,
+				4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */,
+				4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */,
+				4C27B2A41BD6BD5C002D4E90 /* LaunchScreen.storyboard */,
+				4C27B2A71BD6BD5C002D4E90 /* Info.plist */,
+				4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */,
+			);
+			path = DomoArigato;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C27B2941BD6BD5C002D4E90 /* DomoArigato */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C27B2AA1BD6BD5C002D4E90 /* Build configuration list for PBXNativeTarget "DomoArigato" */;
+			buildPhases = (
+				4C27B2911BD6BD5C002D4E90 /* Sources */,
+				4C27B2921BD6BD5C002D4E90 /* Frameworks */,
+				4C27B2931BD6BD5C002D4E90 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DomoArigato;
+			productName = DomoArigato;
+			productReference = 4C27B2951BD6BD5C002D4E90 /* DomoArigato.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C27B28D1BD6BD5C002D4E90 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = FLKone;
+				TargetAttributes = {
+					4C27B2941BD6BD5C002D4E90 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 4C27B2901BD6BD5C002D4E90 /* Build configuration list for PBXProject "DomoArigato" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4C27B28C1BD6BD5C002D4E90;
+			productRefGroup = 4C27B2961BD6BD5C002D4E90 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C27B2941BD6BD5C002D4E90 /* DomoArigato */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C27B2931BD6BD5C002D4E90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C27B2A61BD6BD5C002D4E90 /* LaunchScreen.storyboard in Resources */,
+				4C27B2A31BD6BD5C002D4E90 /* Assets.xcassets in Resources */,
+				4C27B29E1BD6BD5C002D4E90 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C27B2911BD6BD5C002D4E90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C27B2A11BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld in Sources */,
+				4C27B29B1BD6BD5C002D4E90 /* ViewController.swift in Sources */,
+				4C27B2991BD6BD5C002D4E90 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C27B29D1BD6BD5C002D4E90 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4C27B2A41BD6BD5C002D4E90 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C27B2A51BD6BD5C002D4E90 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4C27B2A81BD6BD5C002D4E90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4C27B2A91BD6BD5C002D4E90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C27B2AB1BD6BD5C002D4E90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DomoArigato/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flkone.DomoArigato;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4C27B2AC1BD6BD5C002D4E90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DomoArigato/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flkone.DomoArigato;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C27B2901BD6BD5C002D4E90 /* Build configuration list for PBXProject "DomoArigato" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C27B2A81BD6BD5C002D4E90 /* Debug */,
+				4C27B2A91BD6BD5C002D4E90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C27B2AA1BD6BD5C002D4E90 /* Build configuration list for PBXNativeTarget "DomoArigato" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C27B2AB1BD6BD5C002D4E90 /* Debug */,
+				4C27B2AC1BD6BD5C002D4E90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4C27B2A01BD6BD5C002D4E90 /* DomoArigato.xcdatamodel */,
+			);
+			currentVersion = 4C27B2A01BD6BD5C002D4E90 /* DomoArigato.xcdatamodel */;
+			path = DomoArigato.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4C27B28D1BD6BD5C002D4E90 /* Project object */;
+}
