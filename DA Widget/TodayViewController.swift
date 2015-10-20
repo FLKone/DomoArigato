@@ -53,8 +53,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         print("viewDidAppear")
         self.LogView.text = "\(NSDate()) viewDidAppear\n\(self.LogView.text)"
         self.RefreshTemp(self.TempBtn)
@@ -87,6 +87,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                                         self.nbR += 1
 
                                         self.ActivityIndicator.stopAnimating()
+                                        
                                         break
                                     }
                                 }
