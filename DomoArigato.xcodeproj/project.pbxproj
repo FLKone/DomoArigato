@@ -49,6 +49,8 @@
 /* Begin PBXFileReference section */
 		1693719C06B274500CB07050 /* Pods-DomoArigato.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomoArigato.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DomoArigato/Pods-DomoArigato.debug.xcconfig"; sourceTree = "<group>"; };
 		4C1EEAAB1BD9D56300BD64E3 /* DomoArigato v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DomoArigato v2.xcdatamodel"; sourceTree = "<group>"; };
+		4C1EEAAC1BD9D8AB00BD64E3 /* DomoArigato.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DomoArigato.entitlements; sourceTree = "<group>"; };
+		4C1EEAAD1BD9D90600BD64E3 /* DA Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "DA Widget.entitlements"; sourceTree = "<group>"; };
 		4C27B2951BD6BD5C002D4E90 /* DomoArigato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DomoArigato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		4C27B2971BD6BD5C002D4E90 /* DomoArigato */ = {
 			isa = PBXGroup;
 			children = (
+				4C1EEAAC1BD9D8AB00BD64E3 /* DomoArigato.entitlements */,
 				4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */,
 				4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */,
 				4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */,
@@ -125,6 +128,7 @@
 		4C9AC9D71BD6E98B0013519A /* DA Widget */ = {
 			isa = PBXGroup;
 			children = (
+				4C1EEAAD1BD9D90600BD64E3 /* DA Widget.entitlements */,
 				4C9AC9D81BD6E98B0013519A /* TodayViewController.swift */,
 				4C9AC9DA1BD6E98B0013519A /* MainInterface.storyboard */,
 				4C9AC9DD1BD6E98B0013519A /* Info.plist */,
@@ -206,10 +210,20 @@
 					4C27B2941BD6BD5C002D4E90 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 4Z4VCUMET3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					4C9AC9D31BD6E98B0013519A = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 4Z4VCUMET3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -447,12 +461,15 @@
 			baseConfigurationReference = 1693719C06B274500CB07050 /* Pods-DomoArigato.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DomoArigato/DomoArigato.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DomoArigato/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flkone.DomoArigato;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -461,24 +478,30 @@
 			baseConfigurationReference = 9370E6B07860039694B9750A /* Pods-DomoArigato.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DomoArigato/DomoArigato.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DomoArigato/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flkone.DomoArigato;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 		4C9AC9E11BD6E98B0013519A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "DA Widget/DA Widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "DA Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flkone.DomoArigato.DA-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -486,12 +509,15 @@
 		4C9AC9E21BD6E98B0013519A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "DA Widget/DA Widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "DA Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flkone.DomoArigato.DA-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

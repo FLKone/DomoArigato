@@ -49,8 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.flkone.DomoArigato" in the application's documents Application Support directory.
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1]
+        let urls = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.domoarigato")
+        print(urls)
+//        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        return urls!//[urls.count-1]
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
