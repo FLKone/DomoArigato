@@ -78,15 +78,17 @@
                                 <segment title="All"/>
                                 <segment title="Favorites"/>
                             </segments>
+                            <connections>
+                                <action selector="filterDevices:" destination="BYZ-38-t0r" eventType="valueChanged" id="edH-MZ-txH"/>
+                            </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="gwS-hs-qg0">
                             <connections>
-                                <action selector="refreshData:" destination="BYZ-38-t0r" id="MxJ-77-5cI"/>
+                                <action selector="reloadData:" destination="BYZ-38-t0r" id="Ing-98-f7o"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="ReloadButton" destination="gwS-hs-qg0" id="JV4-Tp-LO7"/>
                         <outlet property="tableView" destination="lij-N3-xng" id="EQg-ub-Ajn"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="GXa-3b-JyZ"/>
                     </connections>

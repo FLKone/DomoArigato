@@ -12,27 +12,27 @@ import Alamofire
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
-    @IBOutlet weak var ReloadButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     var devices =  [NSManagedObject]()
     var showFavoritesOnly: Bool = false
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
-        let animalsFetchRequest = NSFetchRequest(entityName: "Device")
+
+        let devicesFetchRequest = NSFetchRequest(entityName: "Device")
 
         let primarySortDescriptor = NSSortDescriptor(key: "type", ascending: true)
         let secondarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
 
-        animalsFetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
-        
+        devicesFetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
+
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
+
         let frc = NSFetchedResultsController(
-            fetchRequest: animalsFetchRequest,
+            fetchRequest: devicesFetchRequest,
             managedObjectContext: appDelegate.managedObjectContext,
             sectionNameKeyPath: "type",
             cacheName: nil)
-        
+
         frc.delegate = self
         
         return frc
@@ -42,11 +42,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print("An error occurred")
-        }
+        self.refreshData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -57,10 +53,42 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.didReceiveMemoryWarning()
     }
 
+    func refreshData() {
+        if self.showFavoritesOnly {
+            fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "isFavorite == %@", argumentArray: ["1"])
+        }
+        else {
+            fetchedResultsController.fetchRequest.predicate = nil
+        }
+
+        do {
+            NSFetchedResultsController.deleteCacheWithName(nil)
+            print(fetchedResultsController.fetchRequest)
+            try fetchedResultsController.performFetch()
+            
+            self.tableView.reloadData()
+        } catch {
+            print("An error occurred")
+        }
+    }
     // MARK: - Actions
     
-    @IBAction func refreshData(sender: AnyObject?) {
-        print("refreshData from \(sender)")
+    @IBAction func filterDevices(sender: UISegmentedControl) {
+        
+        print(" index \(sender.selectedSegmentIndex)")
+        
+        if sender.selectedSegmentIndex == 0 {
+            self.showFavoritesOnly = false
+        }
+        else {
+            self.showFavoritesOnly = true
+        }
+        
+        self.refreshData()
+    }
+
+    @IBAction func reloadData(sender: AnyObject?) {
+        print("reloadData from \(sender)")
         
         //self.items.removeAll()
         
@@ -149,6 +177,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - UITableView DataSource
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         let device = fetchedResultsController.objectAtIndexPath(indexPath)
+        //cell.textLabel?.text = "\(device.valueForKey("name")!) \(device.valueForKey("isFavorite")!)"
         cell.textLabel?.text = device.valueForKey("name") as? String
         cell.detailTextLabel?.text = device.valueForKey("data") as? String
     }
