@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -14,47 +15,66 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
-                                <rect key="frame" x="20" y="0.0" width="280" height="60"/>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="alx-It-U3w">
+                                <rect key="frame" x="16" y="0.0" width="288" height="44"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nzx-bU-hmK">
+                                    <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="Hello World" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="0.2409317493" blue="0.26367763249999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liX-HZ-u4X">
+                                            <rect key="frame" x="258" y="0.0" width="30" height="44"/>
+                                            <animations/>
+                                            <state key="normal" title="BTN">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="RefreshTemp:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="4af-4I-B8C"/>
+                                            </connections>
+                                        </button>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="247" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="lm4-XP-iup">
+                                            <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
+                                            <animations/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="lm4-XP-iup" firstAttribute="top" secondItem="nzx-bU-hmK" secondAttribute="top" id="2GP-Cg-ZkO"/>
+                                        <constraint firstAttribute="bottom" secondItem="lm4-XP-iup" secondAttribute="bottom" id="8zM-Qz-6cs"/>
+                                        <constraint firstAttribute="bottom" secondItem="GcN-lo-r42" secondAttribute="bottom" id="MIM-GP-SUK"/>
+                                        <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="nzx-bU-hmK" secondAttribute="top" id="bk0-Wg-l1c"/>
+                                        <constraint firstAttribute="bottom" secondItem="liX-HZ-u4X" secondAttribute="bottom" id="eei-14-0Pr"/>
+                                        <constraint firstItem="liX-HZ-u4X" firstAttribute="top" secondItem="nzx-bU-hmK" secondAttribute="top" id="oWI-tb-ayd"/>
+                                    </constraints>
+                                </view>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="jOa-tm-vzM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="lm4-XP-iup">
-                                <rect key="frame" x="20" y="20" width="20" height="20"/>
-                                <animations/>
-                            </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liX-HZ-u4X">
-                                <rect key="frame" x="237" y="15" width="67" height="30"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="67" id="FnI-jk-NAE"/>
-                                </constraints>
-                                <state key="normal" title="BTN">
-                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="RefreshTemp:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="4af-4I-B8C"/>
-                                </connections>
-                            </button>
+                                <vibrancyEffect>
+                                    <blurEffect style="dark"/>
+                                </vibrancyEffect>
+                            </visualEffectView>
                         </subviews>
                         <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="20" symbolic="YES" id="6Vq-gs-PHe"/>
-                            <constraint firstItem="liX-HZ-u4X" firstAttribute="centerY" secondItem="GcN-lo-r42" secondAttribute="centerY" id="E93-Qq-VHX"/>
-                            <constraint firstItem="lm4-XP-iup" firstAttribute="centerY" secondItem="GcN-lo-r42" secondAttribute="centerY" id="GZY-KC-ZVm"/>
-                            <constraint firstItem="lm4-XP-iup" firstAttribute="leading" secondItem="GcN-lo-r42" secondAttribute="leading" id="Iqq-m9-cP0"/>
-                            <constraint firstAttribute="trailing" secondItem="GcN-lo-r42" secondAttribute="trailing" constant="20" symbolic="YES" id="L8K-9R-egU"/>
-                            <constraint firstItem="liX-HZ-u4X" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="Ln8-HE-i5g"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="NvG-TB-ATZ"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" id="TGf-DB-VQD"/>
+                            <constraint firstItem="lm4-XP-iup" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="5Ch-dq-Bhn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GcN-lo-r42" secondAttribute="trailing" id="5zb-vX-ado"/>
+                            <constraint firstAttribute="height" secondItem="GcN-lo-r42" secondAttribute="height" id="JsE-5U-ITg"/>
+                            <constraint firstItem="alx-It-U3w" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="W6V-uB-4uF"/>
+                            <constraint firstItem="alx-It-U3w" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="fhe-HO-9RG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="alx-It-U3w" secondAttribute="trailing" id="kr6-t4-Lmp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="liX-HZ-u4X" secondAttribute="trailing" id="p4t-W2-xeo"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="uPp-O2-mvy"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="alx-It-U3w" secondAttribute="bottom" id="zDG-a2-IUq"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -62,7 +82,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="60"/>
+                    <size key="freeformSize" width="320" height="44"/>
                     <connections>
                         <outlet property="ActivityIndicator" destination="lm4-XP-iup" id="wYr-6H-mDH"/>
                         <outlet property="TempBtn" destination="liX-HZ-u4X" id="bZc-PY-obG"/>

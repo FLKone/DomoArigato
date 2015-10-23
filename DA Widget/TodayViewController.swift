@@ -58,9 +58,20 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func widgetMarginInsetsForProposedMarginInsets
         (defaultMarginInsets: UIEdgeInsets) -> (UIEdgeInsets) {
-            return UIEdgeInsetsZero
+            print (defaultMarginInsets)
+            
+
+            var inset = defaultMarginInsets
+            
+            inset.bottom = 10
+            inset.top = 10
+            inset.right = 10
+
+            print (inset)
+
+            return inset//UIEdgeInsetsZero
     }
-    
+
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
         print("widgetPerformUpdateWithCompletionHandler", terminator: "")
