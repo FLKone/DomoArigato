@@ -14,22 +14,25 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
-                                <rect key="frame" x="20" y="8" width="280" height="21"/>
+                                <rect key="frame" x="20" y="0.0" width="280" height="60"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="jOa-tm-vzM"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="lm4-XP-iup">
-                                <rect key="frame" x="20" y="9" width="20" height="20"/>
+                                <rect key="frame" x="20" y="20" width="20" height="20"/>
                                 <animations/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liX-HZ-u4X">
-                                <rect key="frame" x="237" y="4" width="67" height="30"/>
+                                <rect key="frame" x="237" y="15" width="67" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="67" id="FnI-jk-NAE"/>
@@ -41,28 +44,17 @@
                                     <action selector="RefreshTemp:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="4af-4I-B8C"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaV-dp-bma">
-                                <rect key="frame" x="16" y="37" width="288" height="55"/>
-                                <animations/>
-                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <animations/>
                         <constraints>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" constant="71" id="0Q0-KW-PJ6"/>
                             <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="20" symbolic="YES" id="6Vq-gs-PHe"/>
-                            <constraint firstItem="liX-HZ-u4X" firstAttribute="centerY" secondItem="lm4-XP-iup" secondAttribute="centerY" id="6Zz-xV-VWm"/>
-                            <constraint firstItem="iaV-dp-bma" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" constant="8" id="9x9-4L-00a"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="iaV-dp-bma" secondAttribute="bottom" constant="8" id="HGV-dK-6b5"/>
-                            <constraint firstItem="liX-HZ-u4X" firstAttribute="baseline" secondItem="GcN-lo-r42" secondAttribute="baseline" id="J8V-4B-CBd"/>
+                            <constraint firstItem="liX-HZ-u4X" firstAttribute="centerY" secondItem="GcN-lo-r42" secondAttribute="centerY" id="E93-Qq-VHX"/>
+                            <constraint firstItem="lm4-XP-iup" firstAttribute="centerY" secondItem="GcN-lo-r42" secondAttribute="centerY" id="GZY-KC-ZVm"/>
+                            <constraint firstItem="lm4-XP-iup" firstAttribute="leading" secondItem="GcN-lo-r42" secondAttribute="leading" id="Iqq-m9-cP0"/>
                             <constraint firstAttribute="trailing" secondItem="GcN-lo-r42" secondAttribute="trailing" constant="20" symbolic="YES" id="L8K-9R-egU"/>
-                            <constraint firstItem="lm4-XP-iup" firstAttribute="leading" secondItem="GcN-lo-r42" secondAttribute="leading" id="MET-Ow-hXT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iaV-dp-bma" secondAttribute="trailing" id="WIa-PR-9Pc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="liX-HZ-u4X" secondAttribute="trailing" id="alE-82-O5n"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" symbolic="YES" id="mYS-Cv-VNx"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="iaV-dp-bma" secondAttribute="leading" id="vMZ-YX-rOq"/>
+                            <constraint firstItem="liX-HZ-u4X" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="Ln8-HE-i5g"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="NvG-TB-ATZ"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" id="TGf-DB-VQD"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -70,10 +62,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="100"/>
+                    <size key="freeformSize" width="320" height="60"/>
                     <connections>
                         <outlet property="ActivityIndicator" destination="lm4-XP-iup" id="wYr-6H-mDH"/>
-                        <outlet property="LogView" destination="iaV-dp-bma" id="ItK-RL-dpI"/>
                         <outlet property="TempBtn" destination="liX-HZ-u4X" id="bZc-PY-obG"/>
                         <outlet property="TempLabel" destination="GcN-lo-r42" id="aYi-kT-DV8"/>
                     </connections>

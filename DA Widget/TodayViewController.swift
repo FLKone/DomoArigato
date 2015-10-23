@@ -30,11 +30,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         let managedContext = self.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Device")
-        fetchRequest.returnsObjectsAsFaults = false
+        fetchRequest.predicate = NSPredicate(format: "id == %@", argumentArray: ["E802"])
+        
+        //fetchRequest.returnsObjectsAsFaults = false
         do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
+            let results = try managedContext.executeFetchRequest(fetchRequest) as NSArray
             print(results)
-//            devices = results as! [NSManagedObject]
+            let tmpdevice = results.objectAtIndex(0) as! NSManagedObject
+            
+            self.TempLabel.text = tmpdevice.valueForKey("data") as? String
+
             
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
@@ -64,7 +69,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's an update, use NCUpdateResult.NewData
        
         //self.TempLabel.text = "widgetPerformUpdateWithCompletionHandler"
-        self.LogView.text = "\(NSDate()) widgetPerform\n\(self.LogView.text)"
+        //self.LogView.text = "\(NSDate()) widgetPerform\n\(self.LogView.text)"
         self.RefreshTemp(self.TempBtn)
         
         completionHandler(NCUpdateResult.NewData)
@@ -74,8 +79,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         print("viewDidAppear", terminator: "")
-        self.LogView.text = "\(NSDate()) viewDidAppear\n\(self.LogView.text)"
-        //self.RefreshTemp(self.TempBtn)
+        //self.LogView.text = "\(NSDate()) viewDidAppear\n\(self.LogView.text)"
+        self.RefreshTemp(self.TempBtn)
     }
     
     @IBAction func RefreshTemp(sender: UIButton) {
