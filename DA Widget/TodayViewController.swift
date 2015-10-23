@@ -23,7 +23,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         
-        print("viewDidLoad")
+        print("viewDidLoad", terminator: "")
 
     }
     
@@ -40,7 +40,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
-        print("widgetPerformUpdateWithCompletionHandler")
+        print("widgetPerformUpdateWithCompletionHandler", terminator: "")
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
@@ -55,7 +55,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewDidAppear")
+        print("viewDidAppear", terminator: "")
         self.LogView.text = "\(NSDate()) viewDidAppear\n\(self.LogView.text)"
         self.RefreshTemp(self.TempBtn)
     }

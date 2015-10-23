@@ -13,7 +13,7 @@
 		4C27B2A11BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */; };
 		4C27B2A31BD6BD5C002D4E90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */; };
 		4C27B2A61BD6BD5C002D4E90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B2A41BD6BD5C002D4E90 /* LaunchScreen.storyboard */; };
-		4C9AC9D61BD6E98B0013519A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9AC9D51BD6E98B0013519A /* NotificationCenter.framework */; settings = {ASSET_TAGS = (); }; };
+		4C9AC9D61BD6E98B0013519A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9AC9D51BD6E98B0013519A /* NotificationCenter.framework */; };
 		4C9AC9D91BD6E98B0013519A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AC9D81BD6E98B0013519A /* TodayViewController.swift */; };
 		4C9AC9DC1BD6E98B0013519A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9AC9DA1BD6E98B0013519A /* MainInterface.storyboard */; };
 		4C9AC9E01BD6E98B0013519A /* DA Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4C9AC9D41BD6E98B0013519A /* DA Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -197,6 +197,7 @@
 		4C27B28D1BD6BD5C002D4E90 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = FLKone;
 				TargetAttributes = {

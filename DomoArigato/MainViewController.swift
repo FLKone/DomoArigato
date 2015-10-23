@@ -77,12 +77,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        print("You selected cell #\(indexPath.row)!")
+        print("You selected cell #\(indexPath.row)!", terminator: "")
     }
     
 
     @IBAction func refreshData(sender: AnyObject?) {
-        print("refreshData from \(sender)")
+        print("refreshData from \(sender)", terminator: "")
         
         self.items.removeAll()
         
