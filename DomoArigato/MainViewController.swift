@@ -288,14 +288,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         switch type {
             case .Insert:
                 print("Insert")
-                self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+                self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Top)
             case .Update:
                 print("Update")
             case .Move:
                 print("Move")
             case .Delete:
                 print("Delete")
-                self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+                self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Bottom)
         }
 
 
@@ -312,25 +312,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch type {
                 case .Insert:
                     print("Insert")
-                    self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+                    self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Top)
                 case .Update:
                     print("Update")
                     let cell = self.tableView.cellForRowAtIndexPath(indexPath!)
                     self.configureCell(cell!, atIndexPath: indexPath!)
-                    self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+                    self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .None)
                 case .Move:
                     print("Move")
-                    self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                    self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+                    self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+                    self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
                 case .Delete:
                     print("Delete \(indexPath)")
-                    let rows = self.tableView(tableView, numberOfRowsInSection: indexPath!.section)
-                    print(" rows= \(rows)")
-                    self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                    if rows == 0 {
-                        self.tableView.deleteSections(NSIndexSet(index: indexPath!.section), withRowAnimation: .Fade)
-                    }
-
+                    self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
             }
     }
     
