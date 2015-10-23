@@ -56,7 +56,7 @@
 		4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4C27B29D1BD6BD5C002D4E90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C27B2A01BD6BD5C002D4E90 /* DomoArigato.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DomoArigato.xcdatamodel; sourceTree = "<group>"; };
-		4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../DomoArigato/Assets.xcassets; sourceTree = "<group>"; };
 		4C27B2A51BD6BD5C002D4E90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C27B2A71BD6BD5C002D4E90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C9AC9D41BD6E98B0013519A /* DA Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DA Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				4C27B2971BD6BD5C002D4E90 /* DomoArigato */,
+				4CBBC99F1BDAB3070003A8C8 /* Shared */,
 				4C9AC9D71BD6E98B0013519A /* DA Widget */,
 				4C27B2961BD6BD5C002D4E90 /* Products */,
 				F473B8B7913D1270BA71909E /* Pods */,
@@ -113,14 +114,12 @@
 		4C27B2971BD6BD5C002D4E90 /* DomoArigato */ = {
 			isa = PBXGroup;
 			children = (
-				4C1EEAAC1BD9D8AB00BD64E3 /* DomoArigato.entitlements */,
+				4C27B2A41BD6BD5C002D4E90 /* LaunchScreen.storyboard */,
+				4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */,
 				4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */,
 				4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */,
-				4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */,
-				4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */,
-				4C27B2A41BD6BD5C002D4E90 /* LaunchScreen.storyboard */,
+				4C1EEAAC1BD9D8AB00BD64E3 /* DomoArigato.entitlements */,
 				4C27B2A71BD6BD5C002D4E90 /* Info.plist */,
-				4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */,
 			);
 			path = DomoArigato;
 			sourceTree = "<group>";
@@ -128,11 +127,21 @@
 		4C9AC9D71BD6E98B0013519A /* DA Widget */ = {
 			isa = PBXGroup;
 			children = (
-				4C1EEAAD1BD9D90600BD64E3 /* DA Widget.entitlements */,
-				4C9AC9D81BD6E98B0013519A /* TodayViewController.swift */,
 				4C9AC9DA1BD6E98B0013519A /* MainInterface.storyboard */,
+				4C9AC9D81BD6E98B0013519A /* TodayViewController.swift */,
+				4C1EEAAD1BD9D90600BD64E3 /* DA Widget.entitlements */,
 				4C9AC9DD1BD6E98B0013519A /* Info.plist */,
 			);
+			path = "DA Widget";
+			sourceTree = "<group>";
+		};
+		4CBBC99F1BDAB3070003A8C8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */,
+				4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */,
+			);
+			name = Shared;
 			path = "DA Widget";
 			sourceTree = "<group>";
 		};
@@ -409,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -448,7 +457,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -562,7 +571,8 @@
 				4C27B2A01BD6BD5C002D4E90 /* DomoArigato.xcdatamodel */,
 			);
 			currentVersion = 4C1EEAAB1BD9D56300BD64E3 /* DomoArigato v2.xcdatamodel */;
-			path = DomoArigato.xcdatamodeld;
+			name = DomoArigato.xcdatamodeld;
+			path = ../DomoArigato/DomoArigato.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
