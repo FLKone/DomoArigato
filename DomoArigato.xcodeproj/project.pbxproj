@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1EEAAA1BD9C1B400BD64E3 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */; };
 		4C27B2991BD6BD5C002D4E90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */; };
 		4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */; };
 		4C27B29E1BD6BD5C002D4E90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */; };
@@ -314,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1EEAAA1BD9C1B400BD64E3 /* DomoArigato.xcdatamodeld in Sources */,
 				4C9AC9D91BD6E98B0013519A /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
