@@ -69,9 +69,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="ond-Kf-mJZ">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="Dux-CH-RBs"/>
+                        <barButtonItem key="leftBarButtonItem" image="SettingsIcon" id="Dux-CH-RBs"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="gpj-aB-AaY">
-                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <rect key="frame" x="210" y="7" width="180" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <segments>
@@ -82,11 +82,6 @@
                                 <action selector="filterDevices:" destination="BYZ-38-t0r" eventType="valueChanged" id="edH-MZ-txH"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="gwS-hs-qg0">
-                            <connections>
-                                <action selector="reloadData:" destination="BYZ-38-t0r" id="Ing-98-f7o"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="lij-N3-xng" id="EQg-ub-Ajn"/>
@@ -117,4 +112,7 @@
             <point key="canvasLocation" x="411" y="707"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SettingsIcon" width="22" height="22"/>
+    </resources>
 </document>
