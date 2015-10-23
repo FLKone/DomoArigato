@@ -48,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		1693719C06B274500CB07050 /* Pods-DomoArigato.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomoArigato.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DomoArigato/Pods-DomoArigato.debug.xcconfig"; sourceTree = "<group>"; };
+		4C1EEAAB1BD9D56300BD64E3 /* DomoArigato v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DomoArigato v2.xcdatamodel"; sourceTree = "<group>"; };
 		4C27B2951BD6BD5C002D4E90 /* DomoArigato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DomoArigato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -531,9 +532,10 @@
 		4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				4C1EEAAB1BD9D56300BD64E3 /* DomoArigato v2.xcdatamodel */,
 				4C27B2A01BD6BD5C002D4E90 /* DomoArigato.xcdatamodel */,
 			);
-			currentVersion = 4C27B2A01BD6BD5C002D4E90 /* DomoArigato.xcdatamodel */;
+			currentVersion = 4C1EEAAB1BD9D56300BD64E3 /* DomoArigato v2.xcdatamodel */;
 			path = DomoArigato.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -3,10 +3,11 @@
     <entity name="Device" syncable="YES">
         <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Device" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Device" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>
