@@ -42,6 +42,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "reloadData:", forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshControl)
+        
         self.refreshData()
     }
     
@@ -169,7 +173,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                             
                         }
                     }
+                    
+                    if let refreshctrl = sender as? UIRefreshControl {
+                        // sender is a UIRefreshControl.
+                        refreshctrl.endRefreshing()
+                    }
+                    
                 }
+                
         }
     }
 
