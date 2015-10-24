@@ -235,7 +235,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     func configureCell(cell: UICollectionViewCell, atIndexPath indexPath: NSIndexPath, type: String) {
         let device = temps[indexPath.row]
-        print("config cell \(device)")
+        //print("config cell \(device)")
         let nameLabel = cell.viewWithTag(1) as? UILabel
         let dataLabel = cell.viewWithTag(2) as? UILabel
         let typeImage = cell.viewWithTag(3) as? UIImageView
@@ -246,7 +246,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
 
         switch type {
             case "temperature" :
-                typeImage?.image = UIImage(named: "TemperatureOn")
+                typeImage?.image = UIImage(named: "TemperatureOff")
                 //typeImage?.highlightedImage = UIImage(named: "TemperatureOn")
 
                 dataLabel?.text = data.stringByReplacingOccurrencesOfString(" C", withString: "").stringByReplacingOccurrencesOfString(" F", withString: "")
