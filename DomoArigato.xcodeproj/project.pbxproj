@@ -19,6 +19,8 @@
 		4C9AC9DC1BD6E98B0013519A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9AC9DA1BD6E98B0013519A /* MainInterface.storyboard */; };
 		4C9AC9E01BD6E98B0013519A /* DA Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4C9AC9D41BD6E98B0013519A /* DA Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4C9AC9E61BD6FA280013519A /* Pods_DomoArigato.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9AC9E51BD6FA280013519A /* Pods_DomoArigato.framework */; };
+		4CA174261BDBCE7A007F6425 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA174251BDBCE7A007F6425 /* Utils.swift */; };
+		4CA174271BDBCE7A007F6425 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA174251BDBCE7A007F6425 /* Utils.swift */; };
 		5540CA0ECA1E84B8863EDE3C /* Pods_DomoArigato.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9FE2D9062E95C7E2386622 /* Pods_DomoArigato.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,7 @@
 		4C9AC9DB1BD6E98B0013519A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		4C9AC9DD1BD6E98B0013519A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C9AC9E51BD6FA280013519A /* Pods_DomoArigato.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_DomoArigato.framework; path = "Pods/../build/Debug-iphoneos/Pods_DomoArigato.framework"; sourceTree = "<group>"; };
+		4CA174251BDBCE7A007F6425 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Shared/Utils.swift; sourceTree = SOURCE_ROOT; };
 		9370E6B07860039694B9750A /* Pods-DomoArigato.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomoArigato.release.xcconfig"; path = "Pods/Target Support Files/Pods-DomoArigato/Pods-DomoArigato.release.xcconfig"; sourceTree = "<group>"; };
 		CF9FE2D9062E95C7E2386622 /* Pods_DomoArigato.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DomoArigato.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -138,6 +141,7 @@
 		4CBBC99F1BDAB3070003A8C8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4CA174251BDBCE7A007F6425 /* Utils.swift */,
 				4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */,
 				4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */,
 			);
@@ -332,6 +336,7 @@
 				4C27B2A11BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld in Sources */,
 				4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */,
 				4C27B2991BD6BD5C002D4E90 /* AppDelegate.swift in Sources */,
+				4CA174261BDBCE7A007F6425 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +346,7 @@
 			files = (
 				4C1EEAAA1BD9C1B400BD64E3 /* DomoArigato.xcdatamodeld in Sources */,
 				4C9AC9D91BD6E98B0013519A /* TodayViewController.swift in Sources */,
+				4CA174271BDBCE7A007F6425 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
