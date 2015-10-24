@@ -11,8 +11,9 @@ import CoreData
 import Alamofire
 import NotificationCenter
 
-class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
-    
+class TodayViewController: UIViewController, NCWidgetProviding, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
     
@@ -27,11 +28,14 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, 1, 1))
+        
+        print("viewDidLoad")
 
-        print("pref= \(self.preferredContentSize)")
-        self.preferredContentSize = CGSizeMake(self.tableView.frame.width, 30);
-        self.reloadData(nil)
+        //self.tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, 1, 1))
+
+        //print("pref= \(self.preferredContentSize)")
+        self.preferredContentSize = CGSizeMake(self.view.frame.width, 70);
+        //self.reloadData(nil)
         
     }
     
@@ -40,7 +44,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
 
     func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(10, 10, 10, 10)
+        return UIEdgeInsetsZero//UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
     /*
@@ -63,7 +67,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewDidAppear \(self.tableView.contentSize)")
+        print("viewDidAppear")
         
         self.reloadData(nil)
     }
@@ -76,19 +80,30 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         let managedContext = self.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "Device")
-        fetchRequest.predicate = NSPredicate(format: "(isFavorite == %@) AND (type == %@)", argumentArray: ["1", "temperature"])
+        //fetchRequest.predicate = NSPredicate(format: "(isFavorite == %@) AND (type == %@)", argumentArray: ["1", "temperature"])
+        fetchRequest.predicate = NSPredicate(format: "(isFavorite == %@)", argumentArray: ["1"])
+        let primarySortDescriptor = NSSortDescriptor(key: "type", ascending: false)
+        let secondarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        
+        fetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
+
+        
         do {
             temps = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
             
+            print("r= \(temps)")
             print("r= \(temps.count)")
+            self.collectionView.reloadData()
+            print("=== After Reload \(self.preferredContentSize)")
+            //self.preferredContentSize = self.collectionView.contentSize
+            print("=== After Reload 2 \(self.preferredContentSize)")
+            //self.tableView.reloadData()
             
-            self.tableView.reloadData()
-            
-            print("preferredContentSize= \(self.preferredContentSize)")
-            print("contentSize= \(self.tableView.contentSize)")
+            //print("preferredContentSize= \(self.preferredContentSize)")
+            //print("contentSize= \(self.tableView.contentSize)")
 
-            self.preferredContentSize = self.tableView.contentSize;
-            self.tableView.hidden = false;
+            //self.preferredContentSize = self.tableView.contentSize;
+            //self.tableView.hidden = false;
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
@@ -98,7 +113,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     @IBAction func reloadData(sender: AnyObject?) {
-        self.ActivityIndicator.startAnimating()
+        //self.ActivityIndicator.startAnimating()
         Alamofire.request(.GET, "http://192.168.1.29:8080/json.htm?type=devices&filter=all&used=true&order=Name")
             .responseJSON { response in
                 //print(response.request)  // original URL request
@@ -111,7 +126,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
                     let managedContext = self.managedObjectContext
                     let entity =  NSEntityDescription.entityForName("Device", inManagedObjectContext:managedContext)
                     
-                    
+                    //print(JSON)
                     if let result = JSON["result"] as? NSArray {
                         for item in result {
                             let obj = item as! NSDictionary
@@ -177,9 +192,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
                     
                     self.refreshData()
                     
-                    delay(4) {
-                        self.ActivityIndicator.stopAnimating()
-                    }
+                    //delay(4) {
+                      //  self.ActivityIndicator.stopAnimating()
+                    //}
                 }
                 
         }
@@ -187,7 +202,117 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         
     }
     
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            print("sizeForItemAtIndexPath 2")
+            
+            let nbItem = self.collectionView(self.collectionView, numberOfItemsInSection: indexPath.section) as Int
+            
+            let leftInset = ((self.view.frame.width - 40 - CGFloat(10*(nbItem-1))) / CGFloat(nbItem))
+            
+            return CGSize(width: leftInset, height: 54)
+    }
     
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            
+            
+            //print("insetForSectionAtIndex \(nbItem)")
+            
+            //let leftInset = (self.view.frame.width - CGFloat(54*nbItem) - CGFloat(10*(nbItem-1))) / 2
+            return UIEdgeInsets(top: 8.0, left: 20, bottom: 12.0, right: 20)
+
+//            return UIEdgeInsets(top: 10.0, left: leftInset, bottom: 10.0, right: 10)
+            
+            
+    }
+    
+    
+    // MARK: - UICollectionView DataSource
+
+    
+    func configureCell(cell: UICollectionViewCell, atIndexPath indexPath: NSIndexPath, type: String) {
+        let device = temps[indexPath.row]
+        print("config cell \(device)")
+        let nameLabel = cell.viewWithTag(1) as? UILabel
+        let dataLabel = cell.viewWithTag(2) as? UILabel
+        let typeImage = cell.viewWithTag(3) as? UIImageView
+        
+        nameLabel?.text = device.valueForKey("name") as? String
+
+        let data = device.valueForKey("data") as! String
+
+        switch type {
+            case "temperature" :
+                typeImage?.image = UIImage(named: "TemperatureOn")
+                //typeImage?.highlightedImage = UIImage(named: "TemperatureOn")
+
+                dataLabel?.text = data.stringByReplacingOccurrencesOfString(" C", withString: "").stringByReplacingOccurrencesOfString(" F", withString: "")
+                typeImage?.highlighted = false
+            case "lightbulb" :
+                //typeImage?.image = UIImage(named: "SwitchOff")
+                //typeImage?.highlightedImage = UIImage(named: "SwitchOn")
+                
+                dataLabel?.text = device.valueForKey("data") as? String
+                typeImage?.image = UIImage(named: ((data == "On") ? "SwitchOn" : "SwitchOff"))
+
+            default:
+                dataLabel?.text = device.valueForKey("data") as? String
+
+        }
+        
+        //cell.backgroundColor = UIColor.redColor()
+    }
+
+    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("select \(indexPath)")
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+        numberOfItemsInSection section: Int) -> Int {
+            
+            print("numberOfItemsInSection \(temps.count)")
+
+            return temps.count;
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+        cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+            
+        print("cellForItemAtIndexPath")
+            
+        var cell:UICollectionViewCell
+
+        let device = temps[indexPath.row]
+        let type = device.valueForKey("type") as! String
+        switch type {
+            case "temperature" :
+                cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("TempCell", forIndexPath: indexPath)
+                self.configureCell(cell, atIndexPath: indexPath, type: "temperature")
+            case "lightbulb" :
+                cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("SwitchCell", forIndexPath: indexPath)
+                self.configureCell(cell, atIndexPath: indexPath, type: "lightbulb")
+            default:
+                cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("UtilCell", forIndexPath: indexPath)
+                self.configureCell(cell, atIndexPath: indexPath, type: "default")
+        }
+            
+        print("cellForItemAtIndexPath \(cell)")
+            
+        return cell
+    }
+    
+    /*
     // MARK: - UITableView DataSource
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         let device = temps[indexPath.row]
@@ -226,7 +351,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 33
     }
-
+*/
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -292,5 +417,4 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             }
         }
     }
-    
 }
