@@ -27,9 +27,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, 1, 1))
-        self.tableView.hidden = true;
-        self.preferredContentSize = CGSizeMake(self.tableView.frame.width, 33);
+        self.tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, 1, 1))
+
+        print("pref= \(self.preferredContentSize)")
+        self.preferredContentSize = CGSizeMake(self.tableView.frame.width, 30);
         self.reloadData(nil)
         
     }
@@ -42,6 +43,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         return UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
+    /*
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
         print("widgetPerformUpdateWithCompletionHandler")
@@ -49,13 +51,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
        
-        self.tableView.hidden = true;
-        self.preferredContentSize = CGSizeMake(self.tableView.frame.width, 33);
+        print("preferredContentSize= \(self.preferredContentSize)")
+
+        self.preferredContentSize = CGSizeMake(self.tableView.frame.width, 30);
         self.reloadData(nil)
 
         completionHandler(NCUpdateResult.NewData)
         
     }
+    */
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -79,6 +83,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             print("r= \(temps.count)")
             
             self.tableView.reloadData()
+            
+            print("preferredContentSize= \(self.preferredContentSize)")
+            print("contentSize= \(self.tableView.contentSize)")
+
             self.preferredContentSize = self.tableView.contentSize;
             self.tableView.hidden = false;
         } catch let error as NSError {
