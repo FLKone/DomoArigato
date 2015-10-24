@@ -27,11 +27,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 1))
-        
-        //[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
-
+//        self.tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, 1, 1))
+        self.tableView.hidden = true;
+        self.preferredContentSize = CGSizeMake(self.tableView.frame.width, 33);
         self.reloadData(nil)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,7 +39,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
 
     func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-        return UIEdgeInsetsZero
+        return UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
@@ -49,7 +49,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
        
+        self.tableView.hidden = true;
+        self.preferredContentSize = CGSizeMake(self.tableView.frame.width, 33);
         self.reloadData(nil)
+
         completionHandler(NCUpdateResult.NewData)
         
     }
@@ -77,6 +80,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             
             self.tableView.reloadData()
             self.preferredContentSize = self.tableView.contentSize;
+            self.tableView.hidden = false;
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
@@ -164,7 +168,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
                     }
                     
                     self.refreshData()
-                    self.ActivityIndicator.stopAnimating()
+                    
+                    delay(4) {
+                        self.ActivityIndicator.stopAnimating()
+                    }
                 }
                 
         }
@@ -205,7 +212,13 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             print("You selected cell #\(indexPath.row)!")
     }
     
-    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 33
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 33
+    }
+
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
