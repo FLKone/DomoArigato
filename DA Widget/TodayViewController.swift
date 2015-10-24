@@ -11,90 +11,81 @@ import CoreData
 import Alamofire
 import NotificationCenter
 
-class TodayViewController: UIViewController, NCWidgetProviding {
+class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var LogView: UITextView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
+    
+    /*
+    @IBOutlet weak var LogView: UITextView!
+
     @IBOutlet weak var TempBtn: UIButton!
     @IBOutlet weak var TempLabel: UILabel!
-    
+    */
+    var temps = [NSManagedObject]()
     var nbR: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view from its nib.
+        self.tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, self.tableView.frame.size.width, 1))
         
-        print("viewDidLoad")
+        //[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
 
-        
-        let managedContext = self.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Device")
-        fetchRequest.predicate = NSPredicate(format: "id == %@", argumentArray: ["E802"])
-        
-        //fetchRequest.returnsObjectsAsFaults = false
-        do {
-            let results = try managedContext.executeFetchRequest(fetchRequest) as NSArray
-            print(results)
-            let tmpdevice = results.objectAtIndex(0) as! NSManagedObject
-            
-            self.TempLabel.text = tmpdevice.valueForKey("data") as? String
-
-            
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-            
-        }
-        
-        
-        
+        self.reloadData(nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
 
-        // Dispose of any resources that can be recreated.
+    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsetsZero
     }
     
-    func widgetMarginInsetsForProposedMarginInsets
-        (defaultMarginInsets: UIEdgeInsets) -> (UIEdgeInsets) {
-            print (defaultMarginInsets)
-            
-
-            var inset = defaultMarginInsets
-            
-            inset.bottom = 10
-            inset.top = 10
-            inset.right = 10
-
-            print (inset)
-
-            return inset//UIEdgeInsetsZero
-    }
-
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
-        print("widgetPerformUpdateWithCompletionHandler", terminator: "")
+        print("widgetPerformUpdateWithCompletionHandler")
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
        
-        //self.TempLabel.text = "widgetPerformUpdateWithCompletionHandler"
-        //self.LogView.text = "\(NSDate()) widgetPerform\n\(self.LogView.text)"
-        self.RefreshTemp(self.TempBtn)
-        
+        self.reloadData(nil)
         completionHandler(NCUpdateResult.NewData)
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewDidAppear", terminator: "")
-        //self.LogView.text = "\(NSDate()) viewDidAppear\n\(self.LogView.text)"
-        self.RefreshTemp(self.TempBtn)
+        print("viewDidAppear \(self.tableView.contentSize)")
+        
+        self.reloadData(nil)
     }
     
-    @IBAction func RefreshTemp(sender: UIButton) {
+    
+    
+    func refreshData() {
+        
+        
+        let managedContext = self.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Device")
+        fetchRequest.predicate = NSPredicate(format: "(isFavorite == %@) AND (type == %@)", argumentArray: ["1", "temperature"])
+        do {
+            temps = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+            
+            print("r= \(temps.count)")
+            
+            self.tableView.reloadData()
+            self.preferredContentSize = self.tableView.contentSize;
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+
+
+    }
+    
+    @IBAction func reloadData(sender: AnyObject?) {
         self.ActivityIndicator.startAnimating()
         Alamofire.request(.GET, "http://192.168.1.29:8080/json.htm?type=devices&filter=all&used=true&order=Name")
             .responseJSON { response in
@@ -104,34 +95,115 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 //print(response.result)   // result of response serialization
                 
                 if let JSON = response.result.value {
-                    //print("JSON: \(JSON)")
+                    //Core Data
+                    let managedContext = self.managedObjectContext
+                    let entity =  NSEntityDescription.entityForName("Device", inManagedObjectContext:managedContext)
+                    
                     
                     if let result = JSON["result"] as? NSArray {
                         for item in result {
-                            let obj = item as? NSDictionary
-                            if let isFavorite = obj?.objectForKey("Favorite") {
-                                if (isFavorite.integerValue == 1) {
-                                    if (obj?.objectForKey("TypeImg") as? String == "temperature") {
-                                        print(obj)
-                                        let data = obj?.objectForKey("Data") as? String
+                            let obj = item as! NSDictionary
+                            
+                            let request = NSFetchRequest(entityName: "Device")
+                            request.predicate = NSPredicate(format: "id == %@", argumentArray: [(obj.valueForKey("ID"))!])
+                            
+                            do {
+                                let result = try managedContext.executeFetchRequest(request) as NSArray
+                                
+                                //print("Fetch ok: \(result)")
+                                if result.count == 2 {
+                                    continue
+                                }
+                                
+                                if result.count == 1 {
+                                    //update
+                                    let device = result.objectAtIndex(0) as! NSManagedObject
+                                    
+                                    print("\(obj.valueForKey("ID")!) \(obj.valueForKey("Name")!)=\(obj.valueForKey("Data")!) Fav:\(obj.valueForKey("Favorite")!)")
                                         
-                                        self.TempLabel.text = data
+                                    device.setValue(obj.valueForKey("Name"), forKey: "name")
+                                    device.setValue(obj.valueForKey("ID"), forKey: "id")
+                                    device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
+                                    device.setValue(obj.valueForKey("Data"), forKey: "data")
+                                    device.setValue("\(obj.valueForKey("Favorite")!)", forKey: "isFavorite")
+                                    
+                                    //Save It
+                                    do {
+                                        try managedContext.save()
                                         
-                                        self.TempBtn.setTitle("\(self.nbR)", forState: UIControlState.Normal)
-                                        self.nbR += 1
-
-                                        self.ActivityIndicator.stopAnimating()
-                                        
-                                        break
+                                    } catch let error as NSError  {
+                                        print("Could not save \(error), \(error.userInfo)")
                                     }
                                 }
+                                else if result.count == 0 {
+                                    //create new one
+                                    let device = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+                                    device.setValue(obj.valueForKey("Name"), forKey: "name")
+                                    device.setValue(obj.valueForKey("ID"), forKey: "id")
+                                    device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
+                                    device.setValue(obj.valueForKey("Data"), forKey: "data")
+                                    device.setValue("\(obj.valueForKey("Favorite")!)", forKey: "isFavorite")
+                                    
+                                    //Save It
+                                    do {
+                                        try managedContext.save()
+                                        
+                                    } catch let error as NSError  {
+                                        print("Could not save \(error), \(error.userInfo)")
+                                        
+                                    }
+                                }
+                                
+                                
+                            } catch let error as NSError {
+                                print("Fetch failed: \(error.localizedDescription)")
+                                
                             }
+                            
                         }
                     }
+                    
+                    self.refreshData()
+                    self.ActivityIndicator.stopAnimating()
                 }
+                
         }
+        
+        
     }
     
+    
+    // MARK: - UITableView DataSource
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+        let device = temps[indexPath.row]
+        
+        let nameLabel = cell.viewWithTag(1) as! UILabel
+        let dataLabel = cell.viewWithTag(2) as! UILabel
+        nameLabel.text = device.valueForKey("name") as? String
+        dataLabel.text = device.valueForKey("data") as? String
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return temps.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("WidgetTempCell", forIndexPath: indexPath)
+        self.configureCell(cell, atIndexPath: indexPath)
+        return cell
+    }
+    
+    // MARK: - UITableView Delegate
+    func tableView(tableView: UITableView,
+        didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            print("You selected cell #\(indexPath.row)!")
+    }
     
     
     // MARK: - Core Data stack

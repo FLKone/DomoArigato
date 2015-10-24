@@ -75,6 +75,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("An error occurred")
         }
     }
+    
+    
     // MARK: - Actions
     
     @IBAction func filterDevices(sender: UISegmentedControl) {
