@@ -118,12 +118,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                             let obj = item as! NSDictionary
                             
                             let request = NSFetchRequest(entityName: "Device")
-                            request.predicate = NSPredicate(format: "id == %@", argumentArray: [(obj.valueForKey("ID"))!])
+                            request.predicate = NSPredicate(format: "id == %@", argumentArray: [(obj.valueForKey("idx"))!])
                             
                             do {
                                 let result = try managedContext.executeFetchRequest(request) as NSArray
                                 
-                                //print("Fetch ok: \(result)")
+                                print("Fetch ok: \(result)")
                                 if result.count == 2 {
                                     continue
                                 }
@@ -133,7 +133,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     let device = result.objectAtIndex(0) as! NSManagedObject
                                     
                                     device.setValue(obj.valueForKey("Name"), forKey: "name")
-                                    device.setValue(obj.valueForKey("ID"), forKey: "id")
+                                    device.setValue(obj.valueForKey("idx"), forKey: "id")
                                     device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
                                     device.setValue(obj.valueForKey("Data"), forKey: "data")
                                     device.setValue("\(obj.valueForKey("Favorite")!)", forKey: "isFavorite")
@@ -151,7 +151,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     //create new one
                                     let device = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
                                     device.setValue(obj.valueForKey("Name"), forKey: "name")
-                                    device.setValue(obj.valueForKey("ID"), forKey: "id")
+                                    device.setValue(obj.valueForKey("idx"), forKey: "id")
                                     device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
                                     device.setValue(obj.valueForKey("Data"), forKey: "data")
                                     device.setValue("\(obj.valueForKey("Favorite")!)", forKey: "isFavorite")

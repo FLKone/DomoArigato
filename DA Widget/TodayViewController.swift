@@ -132,7 +132,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                             let obj = item as! NSDictionary
                             
                             let request = NSFetchRequest(entityName: "Device")
-                            request.predicate = NSPredicate(format: "id == %@", argumentArray: [(obj.valueForKey("ID"))!])
+                            request.predicate = NSPredicate(format: "id == %@", argumentArray: [(obj.valueForKey("idx"))!])
                             
                             do {
                                 let result = try managedContext.executeFetchRequest(request) as NSArray
@@ -146,10 +146,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                                     //update
                                     let device = result.objectAtIndex(0) as! NSManagedObject
                                     
-                                    print("\(obj.valueForKey("ID")!) \(obj.valueForKey("Name")!)=\(obj.valueForKey("Data")!) Fav:\(obj.valueForKey("Favorite")!)")
+                                    print("\(obj.valueForKey("idx")!) \(obj.valueForKey("Name")!)=\(obj.valueForKey("Data")!) Fav:\(obj.valueForKey("Favorite")!)")
                                         
                                     device.setValue(obj.valueForKey("Name"), forKey: "name")
-                                    device.setValue(obj.valueForKey("ID"), forKey: "id")
+                                    device.setValue(obj.valueForKey("idx"), forKey: "id")
                                     device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
                                     device.setValue(obj.valueForKey("Data"), forKey: "data")
                                     device.setValue("\(obj.valueForKey("Favorite")!)", forKey: "isFavorite")
@@ -166,7 +166,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                                     //create new one
                                     let device = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
                                     device.setValue(obj.valueForKey("Name"), forKey: "name")
-                                    device.setValue(obj.valueForKey("ID"), forKey: "id")
+                                    device.setValue(obj.valueForKey("idx"), forKey: "id")
                                     device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
                                     device.setValue(obj.valueForKey("Data"), forKey: "data")
                                     device.setValue("\(obj.valueForKey("Favorite")!)", forKey: "isFavorite")
