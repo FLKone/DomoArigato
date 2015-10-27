@@ -47,23 +47,14 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         return UIEdgeInsetsZero//UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
-    /*
+    
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
-        // Perform any setup necessary in order to update the view.
-        print("widgetPerformUpdateWithCompletionHandler")
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-       
-        print("preferredContentSize= \(self.preferredContentSize)")
-
-        self.preferredContentSize = CGSizeMake(self.tableView.frame.width, 30);
+        
         self.reloadData(nil)
-
         completionHandler(NCUpdateResult.NewData)
         
     }
-    */
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
