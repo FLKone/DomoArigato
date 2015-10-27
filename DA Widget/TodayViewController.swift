@@ -25,17 +25,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     */
     var temps = [NSManagedObject]()
     var nbR: Int = 0
+    var lastLoadDate: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("viewDidLoad")
 
         //self.tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, 1, 1))
 
-        //print("pref= \(self.preferredContentSize)")
-        self.preferredContentSize = CGSizeMake(self.view.frame.width, 70);
-        //self.reloadData(nil)
+        self.preferredContentSize = CGSizeMake(self.view.frame.width, 80);
         
     }
     
@@ -58,9 +56,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewDidAppear")
         
-        self.reloadData(nil)
+        // on first load view is already loaded from widgetPerformUpdateWithCompletionHandler, on subsquents calls lastLoadData wont be nil
+        if self.lastLoadDate != nil {
+            self.reloadData(nil)
+        }
+
     }
     
     
@@ -81,7 +82,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         
         do {
             temps = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-            
+            self.lastLoadDate = NSDate()
             print("r= \(temps)")
             print("r= \(temps.count)")
             self.collectionView.reloadData()
