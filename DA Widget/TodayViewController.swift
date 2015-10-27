@@ -23,7 +23,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     @IBOutlet weak var TempBtn: UIButton!
     @IBOutlet weak var TempLabel: UILabel!
     */
-    var temps = [NSManagedObject]()
+    var devices = [NSManagedObject]()
     var nbR: Int = 0
     var lastLoadDate: NSDate?
     
@@ -81,11 +81,34 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
 
         
         do {
-            temps = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+            let tempDevices = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
             self.lastLoadDate = NSDate()
-            print("r= \(temps)")
-            print("r= \(temps.count)")
-            self.collectionView.reloadData()
+            
+            devices = tempDevices
+            self.collectionView.reloadSections(NSIndexSet(index: 0))
+            
+            /*
+            if devices.count == 0 {
+
+            }
+            else {
+                devices = tempDevices
+                self.collectionView.reloadData()
+            }
+*/
+            
+            print("r= \(devices)")
+            print("r= \(devices.count)")
+            
+
+//            self.collectionView.reloadItemsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)])
+//            self.collectionView.reloadItemsAtIndexPaths([NSIndexPath(forItem: 1, inSection: 0)])
+            
+            /*[self.collectionView performBatchUpdates:^{
+                [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+            } completion:nil];
+            */
+            
             print("=== After Reload \(self.preferredContentSize)")
             //self.preferredContentSize = self.collectionView.contentSize
             print("=== After Reload 2 \(self.preferredContentSize)")
@@ -226,7 +249,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
 
     
     func configureCell(cell: UICollectionViewCell, atIndexPath indexPath: NSIndexPath, type: String) {
-        let device = temps[indexPath.row]
+        let device = devices[indexPath.row]
         //print("config cell \(device)")
         let nameLabel = cell.viewWithTag(1) as? UILabel
         let dataLabel = cell.viewWithTag(2) as? UILabel
@@ -255,7 +278,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
 
         }
         
-        //cell.backgroundColor = UIColor.redColor()
+        //cell.backgroundColor = UIColor.lightGrayColor()
     }
 
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -273,9 +296,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     func collectionView(collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
             
-            print("numberOfItemsInSection \(temps.count)")
+            print("numberOfItemsInSection \(devices.count)")
 
-            return temps.count;
+            return devices.count;
     }
     
     func collectionView(collectionView: UICollectionView,
@@ -285,7 +308,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             
         var cell:UICollectionViewCell
 
-        let device = temps[indexPath.row]
+        let device = devices[indexPath.row]
         let type = device.valueForKey("type") as! String
         switch type {
             case "temperature" :
@@ -303,47 +326,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             
         return cell
     }
-    
-    /*
-    // MARK: - UITableView DataSource
-    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        let device = temps[indexPath.row]
-        
-        let nameLabel = cell.viewWithTag(1) as! UILabel
-        let dataLabel = cell.viewWithTag(2) as! UILabel
-        nameLabel.text = device.valueForKey("name") as? String
-        dataLabel.text = device.valueForKey("data") as? String
-    }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return temps.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("WidgetTempCell", forIndexPath: indexPath)
-        self.configureCell(cell, atIndexPath: indexPath)
-        return cell
-    }
-    
-    // MARK: - UITableView Delegate
-    func tableView(tableView: UITableView,
-        didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            print("You selected cell #\(indexPath.row)!")
-    }
-    
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 33
-    }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 33
-    }
-*/
+
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
