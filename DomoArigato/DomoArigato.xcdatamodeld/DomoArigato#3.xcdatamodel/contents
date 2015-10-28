@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
+    <entity name="Account" syncable="YES">
+        <attribute name="api" optional="YES" attributeType="Integer 64" defaultValueString="1" syncable="YES"/>
+        <attribute name="haveLocal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="local_ip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="local_network" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="local_port" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="mustAuth" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="port" optional="YES" attributeType="Integer 64" syncable="YES"/>
+        <attribute name="selfsigned" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="ssl" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Device" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="data_old" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isToday" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Device" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Account" positionX="-54" positionY="36" width="128" height="210"/>
+    </elements>
+</model>

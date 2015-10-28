@@ -73,7 +73,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         
         let fetchRequest = NSFetchRequest(entityName: "Device")
         //fetchRequest.predicate = NSPredicate(format: "(isFavorite == %@) AND (type == %@)", argumentArray: ["1", "temperature"])
-        fetchRequest.predicate = NSPredicate(format: "(isFavorite == %@)", argumentArray: ["1"])
+        fetchRequest.predicate = NSPredicate(format: "(isFavorite == %@)", argumentArray: [true])
         let primarySortDescriptor = NSSortDescriptor(key: "type", ascending: false)
         let secondarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         
@@ -167,7 +167,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                                     device.setValue(obj.valueForKey("idx"), forKey: "id")
                                     device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
                                     device.setValue(obj.valueForKey("Data"), forKey: "data")
-                                    device.setValue("\(obj.valueForKey("Favorite")!)", forKey: "isFavorite")
+                                    if let isFavorite = obj.valueForKey("Favorite")?.integerValue {
+                                        device.setValue(Bool(isFavorite), forKey: "isFavorite")
+                                    }
                                     
                                     //Save It
                                     do {
@@ -184,7 +186,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                                     device.setValue(obj.valueForKey("idx"), forKey: "id")
                                     device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
                                     device.setValue(obj.valueForKey("Data"), forKey: "data")
-                                    device.setValue("\(obj.valueForKey("Favorite")!)", forKey: "isFavorite")
+                                    if let isFavorite = obj.valueForKey("Favorite")?.integerValue {
+                                        device.setValue(Bool(isFavorite), forKey: "isFavorite")
+                                    }
                                     
                                     //Save It
                                     do {

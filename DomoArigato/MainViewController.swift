@@ -59,7 +59,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func refreshData() {
         if self.showFavoritesOnly {
-            fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "isFavorite == %@", argumentArray: ["1"])
+            fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "isFavorite == %@", argumentArray: [true])
         }
         else {
             fetchedResultsController.fetchRequest.predicate = nil
@@ -136,7 +136,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     device.setValue(obj.valueForKey("idx"), forKey: "id")
                                     device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
                                     device.setValue(obj.valueForKey("Data"), forKey: "data")
-                                    device.setValue("\(obj.valueForKey("Favorite")!)", forKey: "isFavorite")
+                                    if let isFavorite = obj.valueForKey("Favorite")?.integerValue {
+                                        device.setValue(Bool(isFavorite), forKey: "isFavorite")
+                                    }
                                     
                                     //Save It
                                     do {
@@ -154,7 +156,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     device.setValue(obj.valueForKey("idx"), forKey: "id")
                                     device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
                                     device.setValue(obj.valueForKey("Data"), forKey: "data")
-                                    device.setValue("\(obj.valueForKey("Favorite")!)", forKey: "isFavorite")
+                                    if let isFavorite = obj.valueForKey("Favorite")?.integerValue {
+                                        device.setValue(Bool(isFavorite), forKey: "isFavorite")
+                                    }
+
                                     
                                     //Save It
                                     do {

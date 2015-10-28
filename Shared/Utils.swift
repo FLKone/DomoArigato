@@ -16,3 +16,10 @@ func delay(delay:Double, closure:()->()) {
         ),
         dispatch_get_main_queue(), closure)
 }
+
+// From https://gist.github.com/JadenGeller/1ff15b9958400f18f2c1
+extension Bool {
+    init<T : IntegerType>(_ integer: T){
+        self.init(integer != 0)
+    }
+}

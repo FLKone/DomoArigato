@@ -51,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		1693719C06B274500CB07050 /* Pods-DomoArigato.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomoArigato.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DomoArigato/Pods-DomoArigato.debug.xcconfig"; sourceTree = "<group>"; };
+		4C1B35BD1BE128410067EAF9 /* DomoArigato#3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DomoArigato#3.xcdatamodel"; sourceTree = "<group>"; };
+		4C1B35C21BE132710067EAF9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4C1EEAAB1BD9D56300BD64E3 /* DomoArigato v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DomoArigato v2.xcdatamodel"; sourceTree = "<group>"; };
 		4C1EEAAC1BD9D8AB00BD64E3 /* DomoArigato.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DomoArigato.entitlements; sourceTree = "<group>"; };
 		4C1EEAAD1BD9D90600BD64E3 /* DA Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "DA Widget.entitlements"; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		4C27B28C1BD6BD5C002D4E90 = {
 			isa = PBXGroup;
 			children = (
+				4C1B35C21BE132710067EAF9 /* README.md */,
 				4C27B2971BD6BD5C002D4E90 /* DomoArigato */,
 				4CBBC99F1BDAB3070003A8C8 /* Shared */,
 				4C9AC9D71BD6E98B0013519A /* DA Widget */,
@@ -575,10 +578,11 @@
 		4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				4C1B35BD1BE128410067EAF9 /* DomoArigato#3.xcdatamodel */,
 				4C1EEAAB1BD9D56300BD64E3 /* DomoArigato v2.xcdatamodel */,
 				4C27B2A01BD6BD5C002D4E90 /* DomoArigato.xcdatamodel */,
 			);
-			currentVersion = 4C1EEAAB1BD9D56300BD64E3 /* DomoArigato v2.xcdatamodel */;
+			currentVersion = 4C1B35BD1BE128410067EAF9 /* DomoArigato#3.xcdatamodel */;
 			name = DomoArigato.xcdatamodeld;
 			path = ../DomoArigato/DomoArigato.xcdatamodeld;
 			sourceTree = "<group>";
