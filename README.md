@@ -7,9 +7,9 @@
 - [x] Today's Extension (Notification Center) with favorites devices.
 - [ ] Manage Domoticz server account.
 - [ ] Device's action (On/Off/Dimmer).
-- [ ] Filter device shown on Notification Center.
-- [ ] Show graph on device details.
-- [ ] Graph and Device's action from Notification Center.
+- [ ] Filter devices shown on Notification Center.
+- [ ] Details UI with status/data history (graph).
+- [ ] Status history and Device's action from Notification Center.
 
 ## Screenshots (alpha version) 
 
