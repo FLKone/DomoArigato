@@ -20,13 +20,13 @@
 		4C1B35D51BE16B0B0067EAF9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35D41BE16B0B0067EAF9 /* Constants.swift */; };
 		4C1B35D61BE16B0B0067EAF9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35D41BE16B0B0067EAF9 /* Constants.swift */; };
 		4C1B35DB1BE178C60067EAF9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35DA1BE178C60067EAF9 /* SettingsViewController.swift */; };
-		4C1EEAAA1BD9C1B400BD64E3 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */; };
-		4C2392841BDBF3F900BC0BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */; };
+		4C1B35E11BE179520067EAF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1B35DC1BE179520067EAF9 /* Assets.xcassets */; };
+		4C1B35E21BE179520067EAF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1B35DC1BE179520067EAF9 /* Assets.xcassets */; };
+		4C1B35E31BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35DD1BE179520067EAF9 /* DomoArigato.xcdatamodeld */; };
+		4C1B35E41BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35DD1BE179520067EAF9 /* DomoArigato.xcdatamodeld */; };
 		4C27B2991BD6BD5C002D4E90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */; };
 		4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */; };
 		4C27B29E1BD6BD5C002D4E90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */; };
-		4C27B2A11BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */; };
-		4C27B2A31BD6BD5C002D4E90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */; };
 		4C27B2A61BD6BD5C002D4E90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B2A41BD6BD5C002D4E90 /* LaunchScreen.storyboard */; };
 		4C9AC9D61BD6E98B0013519A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9AC9D51BD6E98B0013519A /* NotificationCenter.framework */; };
 		4C9AC9D91BD6E98B0013519A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AC9D81BD6E98B0013519A /* TodayViewController.swift */; };
@@ -64,7 +64,6 @@
 
 /* Begin PBXFileReference section */
 		1693719C06B274500CB07050 /* Pods-DomoArigato.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomoArigato.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DomoArigato/Pods-DomoArigato.debug.xcconfig"; sourceTree = "<group>"; };
-		4C1B35BD1BE128410067EAF9 /* DomoArigato#3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DomoArigato#3.xcdatamodel"; sourceTree = "<group>"; };
 		4C1B35C21BE132710067EAF9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4C1B35C41BE135FC0067EAF9 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Shared/Model/Account.swift; sourceTree = SOURCE_ROOT; };
 		4C1B35C71BE136080067EAF9 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Shared/Model/Device.swift; sourceTree = SOURCE_ROOT; };
@@ -73,15 +72,16 @@
 		4C1B35D11BE1505B0067EAF9 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStore.swift; path = Shared/CoreDataStore.swift; sourceTree = SOURCE_ROOT; };
 		4C1B35D41BE16B0B0067EAF9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Shared/Constants.swift; sourceTree = SOURCE_ROOT; };
 		4C1B35DA1BE178C60067EAF9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		4C1EEAAB1BD9D56300BD64E3 /* DomoArigato v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DomoArigato v2.xcdatamodel"; sourceTree = "<group>"; };
+		4C1B35DC1BE179520067EAF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Shared/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		4C1B35DE1BE179520067EAF9 /* DomoArigato v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DomoArigato v2.xcdatamodel"; sourceTree = "<group>"; };
+		4C1B35DF1BE179520067EAF9 /* DomoArigato#3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DomoArigato#3.xcdatamodel"; sourceTree = "<group>"; };
+		4C1B35E01BE179520067EAF9 /* DomoArigato.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DomoArigato.xcdatamodel; sourceTree = "<group>"; };
 		4C1EEAAC1BD9D8AB00BD64E3 /* DomoArigato.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DomoArigato.entitlements; sourceTree = "<group>"; };
 		4C1EEAAD1BD9D90600BD64E3 /* DA Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "DA Widget.entitlements"; sourceTree = "<group>"; };
 		4C27B2951BD6BD5C002D4E90 /* DomoArigato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DomoArigato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4C27B29D1BD6BD5C002D4E90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4C27B2A01BD6BD5C002D4E90 /* DomoArigato.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DomoArigato.xcdatamodel; sourceTree = "<group>"; };
-		4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../DomoArigato/Assets.xcassets; sourceTree = "<group>"; };
 		4C27B2A51BD6BD5C002D4E90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C27B2A71BD6BD5C002D4E90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C9AC9D41BD6E98B0013519A /* DA Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DA Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,9 +162,9 @@
 				4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */,
 				4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */,
 				4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */,
+				4C1B35DA1BE178C60067EAF9 /* SettingsViewController.swift */,
 				4C1EEAAC1BD9D8AB00BD64E3 /* DomoArigato.entitlements */,
 				4C27B2A71BD6BD5C002D4E90 /* Info.plist */,
-				4C1B35DA1BE178C60067EAF9 /* SettingsViewController.swift */,
 			);
 			path = DomoArigato;
 			sourceTree = "<group>";
@@ -189,8 +189,8 @@
 				4C1B35D11BE1505B0067EAF9 /* CoreDataStore.swift */,
 				4CA174251BDBCE7A007F6425 /* Utils.swift */,
 				4C1B35D41BE16B0B0067EAF9 /* Constants.swift */,
-				4C27B2A21BD6BD5C002D4E90 /* Assets.xcassets */,
-				4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */,
+				4C1B35DC1BE179520067EAF9 /* Assets.xcassets */,
+				4C1B35DD1BE179520067EAF9 /* DomoArigato.xcdatamodeld */,
 			);
 			name = Shared;
 			path = "DA Widget";
@@ -314,7 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C27B2A61BD6BD5C002D4E90 /* LaunchScreen.storyboard in Resources */,
-				4C27B2A31BD6BD5C002D4E90 /* Assets.xcassets in Resources */,
+				4C1B35E11BE179520067EAF9 /* Assets.xcassets in Resources */,
 				4C27B29E1BD6BD5C002D4E90 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,7 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C2392841BDBF3F900BC0BAB /* Assets.xcassets in Resources */,
+				4C1B35E21BE179520067EAF9 /* Assets.xcassets in Resources */,
 				4C9AC9DC1BD6E98B0013519A /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,9 +412,9 @@
 				4C1B35D21BE1505B0067EAF9 /* CoreDataStore.swift in Sources */,
 				4C1B35C51BE135FC0067EAF9 /* Account.swift in Sources */,
 				4C1B35DB1BE178C60067EAF9 /* SettingsViewController.swift in Sources */,
-				4C27B2A11BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld in Sources */,
 				4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */,
 				4C1B35CF1BE138D70067EAF9 /* Devices.swift in Sources */,
+				4C1B35E31BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35D51BE16B0B0067EAF9 /* Constants.swift in Sources */,
 				4C1B35C81BE136080067EAF9 /* Device.swift in Sources */,
 				4C27B2991BD6BD5C002D4E90 /* AppDelegate.swift in Sources */,
@@ -427,10 +427,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C1EEAAA1BD9C1B400BD64E3 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35C61BE135FC0067EAF9 /* Account.swift in Sources */,
 				4C1B35CD1BE136340067EAF9 /* Domoticz.swift in Sources */,
 				4C9AC9D91BD6E98B0013519A /* TodayViewController.swift in Sources */,
+				4C1B35E41BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35D01BE138D70067EAF9 /* Devices.swift in Sources */,
 				4CA174271BDBCE7A007F6425 /* Utils.swift in Sources */,
 				4C1B35D31BE1505B0067EAF9 /* CoreDataStore.swift in Sources */,
@@ -659,16 +659,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		4C27B29F1BD6BD5C002D4E90 /* DomoArigato.xcdatamodeld */ = {
+		4C1B35DD1BE179520067EAF9 /* DomoArigato.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				4C1B35BD1BE128410067EAF9 /* DomoArigato#3.xcdatamodel */,
-				4C1EEAAB1BD9D56300BD64E3 /* DomoArigato v2.xcdatamodel */,
-				4C27B2A01BD6BD5C002D4E90 /* DomoArigato.xcdatamodel */,
+				4C1B35DE1BE179520067EAF9 /* DomoArigato v2.xcdatamodel */,
+				4C1B35DF1BE179520067EAF9 /* DomoArigato#3.xcdatamodel */,
+				4C1B35E01BE179520067EAF9 /* DomoArigato.xcdatamodel */,
 			);
-			currentVersion = 4C1B35BD1BE128410067EAF9 /* DomoArigato#3.xcdatamodel */;
+			currentVersion = 4C1B35DF1BE179520067EAF9 /* DomoArigato#3.xcdatamodel */;
 			name = DomoArigato.xcdatamodeld;
-			path = ../DomoArigato/DomoArigato.xcdatamodeld;
+			path = ../Shared/DomoArigato.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

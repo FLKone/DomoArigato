@@ -69,7 +69,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="ond-Kf-mJZ">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="SettingsIcon" id="Dux-CH-RBs"/>
+                        <barButtonItem key="leftBarButtonItem" image="SettingsIcon" id="Dux-CH-RBs">
+                            <connections>
+                                <segue destination="llE-OW-X9d" kind="presentation" identifier="showSettings" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="1yv-c9-NFV"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="gpj-aB-AaY">
                             <rect key="frame" x="210" y="7" width="180" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -90,12 +94,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="707"/>
+            <point key="canvasLocation" x="1098" y="707"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="ng2-KZ-W2W">
             <objects>
-                <viewController id="llE-OW-X9d" sceneMemberID="viewController">
+                <viewController id="llE-OW-X9d" customClass="SettingsViewController" customModule="DomoArigato" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="euK-gD-8Wo"/>
                         <viewControllerLayoutGuide type="bottom" id="WQJ-Z2-LRl"/>
@@ -109,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xg6-Jb-6y0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1829" y="354"/>
+            <point key="canvasLocation" x="1813" y="378"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D4L-aW-MiD">

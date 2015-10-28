@@ -6,4 +6,10 @@
 //  Copyright © 2015 FLKone. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CoreData
+
+class SettingsViewController: UIViewController {
+    
+    
+}
