@@ -16,7 +16,7 @@
     </entity>
     <entity name="Device" syncable="YES">
         <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="data_old" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="data_old" optional="YES" attributeType="String" defaultValueString="-1" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="isToday" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
