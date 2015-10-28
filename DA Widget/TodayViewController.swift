@@ -29,7 +29,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
 
         //self.tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, 1, 1))
 
-        self.preferredContentSize = CGSizeMake(self.view.frame.width, 80);
+        self.preferredContentSize = CGSizeMake(self.view.frame.width, 150);
         
     }
     
@@ -94,6 +94,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             
             devices = tempDevices
             self.collectionView.reloadSections(NSIndexSet(index: 0))
+            self.collectionView.reloadSections(NSIndexSet(index: 1))
         
             /*
             if devices.count == 0 {
@@ -223,8 +224,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             let nbItem = self.collectionView(self.collectionView, numberOfItemsInSection: indexPath.section) as Int
             
             let leftInset = ((self.view.frame.width - 40 - CGFloat(10*(nbItem-1))) / CGFloat(nbItem))
-            
-            return CGSize(width: leftInset, height: 54)
+            if indexPath.section == 0 {
+                return CGSize(width: 54, height: 54)
+            }
+            else  {
+                return CGSize(width: 200, height: 54)
+            }
     }
     
     func collectionView(collectionView: UICollectionView,
@@ -235,7 +240,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             //print("insetForSectionAtIndex \(nbItem)")
             
             //let leftInset = (self.view.frame.width - CGFloat(54*nbItem) - CGFloat(10*(nbItem-1))) / 2
-            return UIEdgeInsets(top: 8.0, left: 20, bottom: 12.0, right: 20)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
 //            return UIEdgeInsets(top: 10.0, left: leftInset, bottom: 10.0, right: 10)
             
@@ -288,23 +293,37 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
             
             print("numberOfItemsInSection \(devices.count)")
-
-            return devices.count;
+            if section == 0 {
+                return devices.count; }
+            else {
+                    return 1 }
     }
     
     func collectionView(collectionView: UICollectionView,
         cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-            
-        print("cellForItemAtIndexPath")
-            
         var cell:UICollectionViewCell
+
+        print("cellForItemAtIndexPath")
+        if indexPath.section == 1 {
+            cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("FakeCell", forIndexPath: indexPath)
+            let nameLabel = cell.viewWithTag(1) as? UILabel
+            let dataLabel = cell.viewWithTag(2) as? UILabel
+            
+            let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+            let build = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as! String
+            
+            nameLabel!.text = "\(version) #\(build)"
+            dataLabel!.text = "\(self.lastLoadDate)"
+            
+            return cell
+        }
 
         let device = devices[indexPath.row]
         let type = device.valueForKey("type") as! String

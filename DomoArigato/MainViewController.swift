@@ -44,6 +44,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    @IBAction func unwindToMainMenu(segue: UIStoryboardSegue) {
+        print("unwindToMainMenu \(segue)")
+        //we have the opportunity to udpate UI after setings change
+        
+    }
+    
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
