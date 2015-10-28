@@ -226,6 +226,7 @@
 				81E33F3B2B4BCF2ACA2A3433 /* Embed Pods Frameworks */,
 				14590B2A56A470723E98181B /* Copy Pods Resources */,
 				4C9AC9E41BD6E98B0013519A /* Embed App Extensions */,
+				4C1B35D81BE174E70067EAF9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -244,6 +245,7 @@
 				4C9AC9D01BD6E98B0013519A /* Sources */,
 				4C9AC9D11BD6E98B0013519A /* Frameworks */,
 				4C9AC9D21BD6E98B0013519A /* Resources */,
+				4C1B35D91BE175100067EAF9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -340,6 +342,32 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DomoArigato/Pods-DomoArigato-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4C1B35D81BE174E70067EAF9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		4C1B35D91BE175100067EAF9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
 		81E33F3B2B4BCF2ACA2A3433 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
