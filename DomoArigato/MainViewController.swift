@@ -13,30 +13,36 @@ import Alamofire
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    let context = CoreDataStore.mainQueueContext()
+
+    
     var devices =  [NSManagedObject]()
     var showFavoritesOnly: Bool = false
+    var _fetchedResultsController:NSFetchedResultsController?
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
+    var fetchedResultsController:NSFetchedResultsController {
+        get {
+            if (_fetchedResultsController == nil) {
+                let devicesFetchRequest = NSFetchRequest(entityName: "Device")
 
-        let devicesFetchRequest = NSFetchRequest(entityName: "Device")
+                let primarySortDescriptor = NSSortDescriptor(key: "type", ascending: true)
+                let secondarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
 
-        let primarySortDescriptor = NSSortDescriptor(key: "type", ascending: true)
-        let secondarySortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+                devicesFetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
 
-        devicesFetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
+                let frc = NSFetchedResultsController(
+                    fetchRequest: devicesFetchRequest,
+                    managedObjectContext: self.context,
+                    sectionNameKeyPath: "type",
+                    cacheName: nil)
 
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
-        let frc = NSFetchedResultsController(
-            fetchRequest: devicesFetchRequest,
-            managedObjectContext: appDelegate.managedObjectContext,
-            sectionNameKeyPath: "type",
-            cacheName: nil)
-
-        frc.delegate = self
-        
-        return frc
-    }()
+                frc.delegate = self
+                _fetchedResultsController = frc
+            }
+            return _fetchedResultsController!
+        }
+    }
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -47,6 +53,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.addSubview(refreshControl)
         
         self.refreshData()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "contextShouldReset:", name: kWidgetModelChangedNotification, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -55,6 +67,29 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: - Notification Methods
+    
+    func contextShouldReset(notification: NSNotification) {
+        print("contextShouldReset \(notification)")
+        // Reset changed context
+        self._fetchedResultsController = nil;
+        self.refreshData()
+        self.context.reset()
+    }
+
+    // MARK: - View lifecycle
+
+    func save() {
+        //Save It
+        do {
+            try CoreDataStore.saveContext(self.context)
+            
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+            
+        }
     }
 
     func refreshData() {
@@ -69,7 +104,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             NSFetchedResultsController.deleteCacheWithName(nil)
             print(fetchedResultsController.fetchRequest)
             try fetchedResultsController.performFetch()
-            
+            print("refreshComplete")
             self.tableView.reloadData()
         } catch {
             print("An error occurred")
@@ -107,10 +142,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 //print(response.result)   // result of response serialization
                 
                 if let JSON = response.result.value {
+
                     //Core Data
-                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                    let managedContext = appDelegate.managedObjectContext
-                    let entity =  NSEntityDescription.entityForName("Device", inManagedObjectContext:managedContext)
+                    let entity =  NSEntityDescription.entityForName("Device", inManagedObjectContext:self.context)
                     
                     
                     if let result = JSON["result"] as? NSArray {
@@ -121,7 +155,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                             request.predicate = NSPredicate(format: "id == %@", argumentArray: [(obj.valueForKey("idx"))!])
                             
                             do {
-                                let result = try managedContext.executeFetchRequest(request) as NSArray
+                                let result = try self.context.executeFetchRequest(request) as NSArray
                                 
                                 print("Fetch ok: \(result)")
                                 if result.count == 2 {
@@ -139,19 +173,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     if let isFavorite = obj.valueForKey("Favorite")?.integerValue {
                                         device.setValue(Bool(isFavorite), forKey: "isFavorite")
                                     }
-                                    
-                                    //Save It
-                                    do {
-                                        try managedContext.save()
-                                        //self.devices[self.devices.indexOf(olddevice)!] = device
-                                        
-                                    } catch let error as NSError  {
-                                        print("Could not save \(error), \(error.userInfo)")
-                                    }
+
+                                    self.save()
                                 }
                                 else if result.count == 0 {
                                     //create new one
-                                    let device = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+                                    let device = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.context)
                                     device.setValue(obj.valueForKey("Name"), forKey: "name")
                                     device.setValue(obj.valueForKey("idx"), forKey: "id")
                                     device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
@@ -160,16 +187,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                         device.setValue(Bool(isFavorite), forKey: "isFavorite")
                                     }
 
-                                    
-                                    //Save It
-                                    do {
-                                        try managedContext.save()
-                                        //self.devices.append(device)
-                                        
-                                    } catch let error as NSError  {
-                                        print("Could not save \(error), \(error.userInfo)")
-                                        
-                                    }
+                                    self.save()
                                 }
                                 
                                 
@@ -194,6 +212,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - UITableView DataSource
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+        print("configure \(indexPath)")
+        
         let device = fetchedResultsController.objectAtIndexPath(indexPath)
         //cell.textLabel?.text = "\(device.valueForKey("name")!) \(device.valueForKey("isFavorite")!)"
         cell.textLabel?.text = device.valueForKey("name") as? String
@@ -241,8 +261,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             print("delete")
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let managedContext = appDelegate.managedObjectContext
+            let managedContext = self.context
             
             managedContext.deleteObject(fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject)
         }
