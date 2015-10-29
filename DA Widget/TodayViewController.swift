@@ -23,6 +23,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     var nbR: Int = 0
     var lastLoadDate: NSDate?
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        Crittercism.enableWithAppID(kCrittercismAPI)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

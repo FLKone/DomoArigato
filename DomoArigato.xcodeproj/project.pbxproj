@@ -28,6 +28,8 @@
 		4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */; };
 		4C27B29E1BD6BD5C002D4E90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */; };
 		4C27B2A61BD6BD5C002D4E90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B2A41BD6BD5C002D4E90 /* LaunchScreen.storyboard */; };
+		4C891A941BE2648000A7EE25 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C891A931BE2648000A7EE25 /* Config.swift */; };
+		4C891A951BE2648000A7EE25 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C891A931BE2648000A7EE25 /* Config.swift */; };
 		4C9AC9D61BD6E98B0013519A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9AC9D51BD6E98B0013519A /* NotificationCenter.framework */; };
 		4C9AC9D91BD6E98B0013519A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AC9D81BD6E98B0013519A /* TodayViewController.swift */; };
 		4C9AC9DC1BD6E98B0013519A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9AC9DA1BD6E98B0013519A /* MainInterface.storyboard */; };
@@ -36,6 +38,7 @@
 		4CA174261BDBCE7A007F6425 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA174251BDBCE7A007F6425 /* Utils.swift */; };
 		4CA174271BDBCE7A007F6425 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA174251BDBCE7A007F6425 /* Utils.swift */; };
 		5540CA0ECA1E84B8863EDE3C /* Pods_DomoArigato.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9FE2D9062E95C7E2386622 /* Pods_DomoArigato.framework */; };
+		B9889097E2EDC6571B686F1C /* Pods_DA_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798A79513400781ABBF3F298 /* Pods_DA_Widget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		1693719C06B274500CB07050 /* Pods-DomoArigato.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomoArigato.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DomoArigato/Pods-DomoArigato.debug.xcconfig"; sourceTree = "<group>"; };
+		1B13B3BA9EF2AE3E9863A37B /* Pods-DA Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DA Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DA Widget/Pods-DA Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		4C1B35C21BE132710067EAF9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4C1B35C41BE135FC0067EAF9 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Shared/Model/Account.swift; sourceTree = SOURCE_ROOT; };
 		4C1B35C71BE136080067EAF9 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Shared/Model/Device.swift; sourceTree = SOURCE_ROOT; };
@@ -84,6 +88,8 @@
 		4C27B29D1BD6BD5C002D4E90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C27B2A51BD6BD5C002D4E90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C27B2A71BD6BD5C002D4E90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C891A911BE2607000A7EE25 /* DomoArigato-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DomoArigato-Bridging-Header.h"; path = "Shared/DomoArigato-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		4C891A931BE2648000A7EE25 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Shared/Config.swift; sourceTree = SOURCE_ROOT; };
 		4C9AC9D41BD6E98B0013519A /* DA Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DA Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9AC9D51BD6E98B0013519A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		4C9AC9D81BD6E98B0013519A /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -91,8 +97,10 @@
 		4C9AC9DD1BD6E98B0013519A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C9AC9E51BD6FA280013519A /* Pods_DomoArigato.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_DomoArigato.framework; path = "Pods/../build/Debug-iphoneos/Pods_DomoArigato.framework"; sourceTree = "<group>"; };
 		4CA174251BDBCE7A007F6425 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Shared/Utils.swift; sourceTree = SOURCE_ROOT; };
+		798A79513400781ABBF3F298 /* Pods_DA_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DA_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9370E6B07860039694B9750A /* Pods-DomoArigato.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomoArigato.release.xcconfig"; path = "Pods/Target Support Files/Pods-DomoArigato/Pods-DomoArigato.release.xcconfig"; sourceTree = "<group>"; };
 		CF9FE2D9062E95C7E2386622 /* Pods_DomoArigato.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DomoArigato.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E92C3445B44E281C5B5F691A /* Pods-DA Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DA Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-DA Widget/Pods-DA Widget.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +118,7 @@
 			files = (
 				4C9AC9E61BD6FA280013519A /* Pods_DomoArigato.framework in Frameworks */,
 				4C9AC9D61BD6E98B0013519A /* NotificationCenter.framework in Frameworks */,
+				B9889097E2EDC6571B686F1C /* Pods_DA_Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,8 +198,10 @@
 				4C1B35D11BE1505B0067EAF9 /* CoreDataStore.swift */,
 				4CA174251BDBCE7A007F6425 /* Utils.swift */,
 				4C1B35D41BE16B0B0067EAF9 /* Constants.swift */,
+				4C891A931BE2648000A7EE25 /* Config.swift */,
 				4C1B35DC1BE179520067EAF9 /* Assets.xcassets */,
 				4C1B35DD1BE179520067EAF9 /* DomoArigato.xcdatamodeld */,
+				4C891A911BE2607000A7EE25 /* DomoArigato-Bridging-Header.h */,
 			);
 			name = Shared;
 			path = "DA Widget";
@@ -202,6 +213,7 @@
 				4C9AC9E51BD6FA280013519A /* Pods_DomoArigato.framework */,
 				CF9FE2D9062E95C7E2386622 /* Pods_DomoArigato.framework */,
 				4C9AC9D51BD6E98B0013519A /* NotificationCenter.framework */,
+				798A79513400781ABBF3F298 /* Pods_DA_Widget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -211,6 +223,8 @@
 			children = (
 				1693719C06B274500CB07050 /* Pods-DomoArigato.debug.xcconfig */,
 				9370E6B07860039694B9750A /* Pods-DomoArigato.release.xcconfig */,
+				1B13B3BA9EF2AE3E9863A37B /* Pods-DA Widget.debug.xcconfig */,
+				E92C3445B44E281C5B5F691A /* Pods-DA Widget.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -245,10 +259,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C9AC9E31BD6E98B0013519A /* Build configuration list for PBXNativeTarget "DA Widget" */;
 			buildPhases = (
+				54A714249FF54E5759EE906C /* Check Pods Manifest.lock */,
 				4C9AC9D01BD6E98B0013519A /* Sources */,
 				4C9AC9D11BD6E98B0013519A /* Frameworks */,
 				4C9AC9D21BD6E98B0013519A /* Resources */,
 				4C1B35D91BE175100067EAF9 /* ShellScript */,
+				52EE5207168369F04B7F826D /* Embed Pods Frameworks */,
+				73E0A82AE0F1E48A4E055C22 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,6 +283,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = FLKone;
 				TargetAttributes = {
@@ -372,6 +390,51 @@
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
+		52EE5207168369F04B7F826D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DA Widget/Pods-DA Widget-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54A714249FF54E5759EE906C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		73E0A82AE0F1E48A4E055C22 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DA Widget/Pods-DA Widget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		81E33F3B2B4BCF2ACA2A3433 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +477,7 @@
 				4C1B35DB1BE178C60067EAF9 /* SettingsViewController.swift in Sources */,
 				4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */,
 				4C1B35CF1BE138D70067EAF9 /* Devices.swift in Sources */,
+				4C891A941BE2648000A7EE25 /* Config.swift in Sources */,
 				4C1B35E31BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35D51BE16B0B0067EAF9 /* Constants.swift in Sources */,
 				4C1B35C81BE136080067EAF9 /* Device.swift in Sources */,
@@ -434,6 +498,7 @@
 				4C1B35D01BE138D70067EAF9 /* Devices.swift in Sources */,
 				4CA174271BDBCE7A007F6425 /* Utils.swift in Sources */,
 				4C1B35D31BE1505B0067EAF9 /* CoreDataStore.swift in Sources */,
+				4C891A951BE2648000A7EE25 /* Config.swift in Sources */,
 				4C1B35C91BE136080067EAF9 /* Device.swift in Sources */,
 				4C1B35D61BE16B0B0067EAF9 /* Constants.swift in Sources */,
 			);
@@ -517,6 +582,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/DomoArigato-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -555,6 +621,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Shared/DomoArigato-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -565,6 +632,7 @@
 			baseConfigurationReference = 1693719C06B274500CB07050 /* Pods-DomoArigato.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DomoArigato/DomoArigato.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -573,6 +641,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flkone.DomoArigato;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -581,6 +650,7 @@
 			baseConfigurationReference = 9370E6B07860039694B9750A /* Pods-DomoArigato.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DomoArigato/DomoArigato.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -594,27 +664,30 @@
 		};
 		4C9AC9E11BD6E98B0013519A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B13B3BA9EF2AE3E9863A37B /* Pods-DA Widget.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "DA Widget/DA Widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "DA Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flkone.DomoArigato.DA-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		4C9AC9E21BD6E98B0013519A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E92C3445B44E281C5B5F691A /* Pods-DA Widget.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "DA Widget/DA Widget.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "DA Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flkone.DomoArigato.DA-Widget";

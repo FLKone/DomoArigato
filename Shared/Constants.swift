@@ -6,8 +6,6 @@
 //  Copyright © 2015 FLKone. All rights reserved.
 //
 
-import Foundation
-
 let kAppGroup:String = "group.flkone.domoarigato"
 
 
