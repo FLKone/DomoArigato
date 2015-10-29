@@ -34,7 +34,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
 
         //self.tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, 1, 1))
 
-        self.preferredContentSize = CGSizeMake(self.view.frame.width, 150);
+        self.preferredContentSize = CGSizeMake(self.view.frame.width, 94 + 8);
         
     }
     
@@ -48,7 +48,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
-        
+        print("widgetPerformUpdateWithCompletionHandler")
+
         self.reloadData(nil)
         completionHandler(NCUpdateResult.NewData)
         
@@ -57,11 +58,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print("viewWillAppear \(self.lastLoadDate) \(self.devices.count)")
         // on first load view is already loaded from widgetPerformUpdateWithCompletionHandler, on subsquents calls lastLoadData wont be nil
-        if self.lastLoadDate != nil {
-            self.reloadData(nil)
-        }
+        self.reloadData(nil)
 
     }
     
@@ -96,7 +95,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         do {
             let tempDevices = try context.executeFetchRequest(fetchRequest) as! [NSManagedObject]
             self.lastLoadDate = NSDate()
-            
+
             devices = tempDevices
             self.collectionView.reloadSections(NSIndexSet(index: 0))
             self.collectionView.reloadSections(NSIndexSet(index: 1))
@@ -111,7 +110,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             }
 */
             
-            print("r= \(devices)")
+            //print("r= \(devices)")
             print("r= \(devices.count)")
             
 
@@ -221,31 +220,39 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         
     }
     
+    
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            print("sizeForItemAtIndexPath 2")
+            //print("sizeForItemAtIndexPath 2")
             
             let nbItem = self.collectionView(self.collectionView, numberOfItemsInSection: indexPath.section) as Int
             
             let leftInset = ((self.view.frame.width - 40 - CGFloat(10*(nbItem-1))) / CGFloat(nbItem))
             if indexPath.section == 0 {
-                return CGSize(width: 54, height: 54)
+                return CGSize(width: leftInset, height: 54)
             }
             else  {
-                return CGSize(width: 200, height: 54)
+                return CGSize(width: 200, height: 20)
             }
     }
     
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            if section == 1 {
+                return UIEdgeInsetsMake(0, 0, 0, 0)
+            }
+            let nbItem = self.collectionView(self.collectionView, numberOfItemsInSection: section) as Int
+
             
-            
-            //print("insetForSectionAtIndex \(nbItem)")
-            
-            //let leftInset = (self.view.frame.width - CGFloat(54*nbItem) - CGFloat(10*(nbItem-1))) / 2
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            let leftInset = (self.view.frame.width - CGFloat(((self.view.frame.width - 40 - CGFloat(10*(nbItem-1))) / CGFloat(nbItem))*CGFloat(nbItem)) - CGFloat(10*(nbItem-1))) / 2
+            print("insetForSectionAtIndex calc=\(self.view.frame.width) nb=\(nbItem) inset=\(leftInset)")
+
+            print("insetForSectionAtIndex section=\(section) nb=\(nbItem) inset=\(leftInset)")
+
+            return UIEdgeInsets(top: 8.0, left: 20, bottom: 12.0, right: 20)
+            //return UIEdgeInsets(top: 10, left: leftInset, bottom: 10, right: 10)
 
 //            return UIEdgeInsets(top: 10.0, left: leftInset, bottom: 10.0, right: 10)
             
@@ -295,6 +302,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print("select \(indexPath)")
+        if indexPath.section == 1 {
+            print("make it crash")
+            print("device \(devices[11])")
+        }
+
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -304,7 +316,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     func collectionView(collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
             
-            print("numberOfItemsInSection \(devices.count)")
+            //print("numberOfItemsInSection \(devices.count)")
             if section == 0 {
                 return devices.count; }
             else {
@@ -315,7 +327,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell:UICollectionViewCell
 
-        print("cellForItemAtIndexPath")
+        //print("cellForItemAtIndexPath")
         if indexPath.section == 1 {
             cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("FakeCell", forIndexPath: indexPath)
             let nameLabel = cell.viewWithTag(1) as? UILabel
@@ -325,8 +337,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             let build = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as! String
             
             nameLabel!.text = "\(version) #\(build)"
-            dataLabel!.text = "\(self.lastLoadDate)"
-            
+            if let lastdate = self.lastLoadDate {
+                dataLabel!.text = "\(lastdate.descriptionWithLocale(NSLocale.systemLocale()))"
+            }
+
+            //cell.backgroundColor = UIColor.redColor()
             return cell
         }
 
@@ -344,7 +359,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                 self.configureCell(cell, atIndexPath: indexPath, type: "default")
         }
             
-        print("cellForItemAtIndexPath \(cell)")
+        //print("cellForItemAtIndexPath \(cell)")
             
         return cell
     }

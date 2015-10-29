@@ -34,7 +34,7 @@ public class CoreDataStore: NSObject {
     // MARK: - Notifications
     
     func contextDidSavePrivateQueueContext(notification: NSNotification) {
-        print("contextDidSavePrivateQueueContext \(notification)")
+        //print("contextDidSavePrivateQueueContext \(notification)")
         if let context = self.mainQueueCtxt {
             self.synced(self, closure: { () -> () in
                 context.performBlock({() -> Void in
@@ -45,7 +45,7 @@ public class CoreDataStore: NSObject {
     }
     
     func contextDidSaveMainQueueContext(notification: NSNotification) {
-        print("contextDidSaveMainQueueContext \(notification)")
+        //print("contextDidSaveMainQueueContext \(notification)")
 
         if let context = self.privateQueueCtxt {
             self.synced(self, closure: { () -> () in

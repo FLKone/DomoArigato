@@ -243,7 +243,7 @@
 				81E33F3B2B4BCF2ACA2A3433 /* Embed Pods Frameworks */,
 				14590B2A56A470723E98181B /* Copy Pods Resources */,
 				4C9AC9E41BD6E98B0013519A /* Embed App Extensions */,
-				4C1B35D81BE174E70067EAF9 /* ShellScript */,
+				4C1B35D81BE174E70067EAF9 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -364,13 +364,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DomoArigato/Pods-DomoArigato-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4C1B35D81BE174E70067EAF9 /* ShellScript */ = {
+		4C1B35D81BE174E70067EAF9 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
