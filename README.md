@@ -21,7 +21,7 @@
 
 ![screen shot 2015-10-24 at 22 44 35](https://cloud.githubusercontent.com/assets/484397/10712702/ffa1c18a-7aa1-11e5-8b66-461b2f80f708.png)
 
-## How to use
+## Usage
 You need to create Config.swift file in `Shared` directory
 ``` swift
 //
@@ -31,11 +31,14 @@ You need to create Config.swift file in `Shared` directory
 
 let kCrittercismAPI:String = "Crittercism API Key"
 ```
+## Requirements
+- iOS >= 8.0
 
+## Contact
+
+- http://github.com/FLKone
+- http://twitter.com/FLKone
 
 ## Credits
 - [Alamofire](https://github.com/Alamofire/Alamofire)
 - [Bool extension](https://gist.github.com/JadenGeller/1ff15b9958400f18f2c1)
-
-## License
-
