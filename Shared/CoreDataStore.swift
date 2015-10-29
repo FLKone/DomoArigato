@@ -82,7 +82,7 @@ public class CoreDataStore: NSObject {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
-        let options = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
+        let options = [NSMigratePersistentStoresAutomaticallyOption: true]
         do {
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
         } catch {
@@ -163,6 +163,8 @@ extension NSManagedObject {
     public class func findAllInContext(entityName: String, context: NSManagedObjectContext) -> [AnyObject]? {
         let request = NSFetchRequest(entityName: entityName)
         var result: [AnyObject]?
+        request.returnsObjectsAsFaults = false
+
         do {
             result = try context.executeFetchRequest(request)
         } catch let error as NSError {

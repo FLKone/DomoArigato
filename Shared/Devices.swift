@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class TheOneAndOnlyDevices {
+    static let sharedInstance = TheOneAndOnlyDevices()
+    private init() {} //This prevents others from using the default '()' initializer for this class.
+    
+    
+}

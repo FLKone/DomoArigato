@@ -2,8 +2,8 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
     <entity name="Account" syncable="YES">
         <attribute name="api" optional="YES" attributeType="Integer 64" defaultValueString="1" syncable="YES"/>
-        <attribute name="haveLocal" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="haveLocal" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="ip" attributeType="String" syncable="YES"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="local_ip" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="local_network" optional="YES" attributeType="String" syncable="YES"/>

@@ -30,6 +30,9 @@
 		4C27B2A61BD6BD5C002D4E90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B2A41BD6BD5C002D4E90 /* LaunchScreen.storyboard */; };
 		4C891A941BE2648000A7EE25 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C891A931BE2648000A7EE25 /* Config.swift */; };
 		4C891A951BE2648000A7EE25 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C891A931BE2648000A7EE25 /* Config.swift */; };
+		4C891A971BE2792C00A7EE25 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C891A961BE2792C00A7EE25 /* AccountViewController.swift */; };
+		4C891A9A1BE2863700A7EE25 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C891A991BE2863700A7EE25 /* AccountCell.swift */; };
+		4C891A9B1BE2863700A7EE25 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C891A991BE2863700A7EE25 /* AccountCell.swift */; };
 		4C9AC9D61BD6E98B0013519A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9AC9D51BD6E98B0013519A /* NotificationCenter.framework */; };
 		4C9AC9D91BD6E98B0013519A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9AC9D81BD6E98B0013519A /* TodayViewController.swift */; };
 		4C9AC9DC1BD6E98B0013519A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9AC9DA1BD6E98B0013519A /* MainInterface.storyboard */; };
@@ -90,6 +93,9 @@
 		4C27B2A71BD6BD5C002D4E90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C891A911BE2607000A7EE25 /* DomoArigato-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DomoArigato-Bridging-Header.h"; path = "Shared/DomoArigato-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		4C891A931BE2648000A7EE25 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Shared/Config.swift; sourceTree = SOURCE_ROOT; };
+		4C891A961BE2792C00A7EE25 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		4C891A991BE2863700A7EE25 /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountCell.swift; path = Shared/View/AccountCell.swift; sourceTree = SOURCE_ROOT; };
+		4C891A9C1BE2B4C200A7EE25 /* DomoArigato#4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DomoArigato#4.xcdatamodel"; sourceTree = "<group>"; };
 		4C9AC9D41BD6E98B0013519A /* DA Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DA Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9AC9D51BD6E98B0013519A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		4C9AC9D81BD6E98B0013519A /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -172,10 +178,19 @@
 				4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */,
 				4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */,
 				4C1B35DA1BE178C60067EAF9 /* SettingsViewController.swift */,
+				4C891A961BE2792C00A7EE25 /* AccountViewController.swift */,
 				4C1EEAAC1BD9D8AB00BD64E3 /* DomoArigato.entitlements */,
 				4C27B2A71BD6BD5C002D4E90 /* Info.plist */,
 			);
 			path = DomoArigato;
+			sourceTree = "<group>";
+		};
+		4C891A981BE2861D00A7EE25 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C891A991BE2863700A7EE25 /* AccountCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		4C9AC9D71BD6E98B0013519A /* DA Widget */ = {
@@ -192,6 +207,7 @@
 		4CBBC99F1BDAB3070003A8C8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4C891A981BE2861D00A7EE25 /* View */,
 				4C1B35C31BE135DA0067EAF9 /* Model */,
 				4C1B35CA1BE136110067EAF9 /* API */,
 				4C1B35CE1BE138D70067EAF9 /* Devices.swift */,
@@ -475,12 +491,14 @@
 			files = (
 				4C1B35D21BE1505B0067EAF9 /* CoreDataStore.swift in Sources */,
 				4C1B35C51BE135FC0067EAF9 /* Account.swift in Sources */,
+				4C891A971BE2792C00A7EE25 /* AccountViewController.swift in Sources */,
 				4C1B35DB1BE178C60067EAF9 /* SettingsViewController.swift in Sources */,
 				4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */,
 				4C1B35CF1BE138D70067EAF9 /* Devices.swift in Sources */,
 				4C891A941BE2648000A7EE25 /* Config.swift in Sources */,
 				4C1B35E31BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35D51BE16B0B0067EAF9 /* Constants.swift in Sources */,
+				4C891A9A1BE2863700A7EE25 /* AccountCell.swift in Sources */,
 				4C1B35C81BE136080067EAF9 /* Device.swift in Sources */,
 				4C27B2991BD6BD5C002D4E90 /* AppDelegate.swift in Sources */,
 				4C1B35CC1BE136340067EAF9 /* Domoticz.swift in Sources */,
@@ -501,6 +519,7 @@
 				4C1B35D31BE1505B0067EAF9 /* CoreDataStore.swift in Sources */,
 				4C891A951BE2648000A7EE25 /* Config.swift in Sources */,
 				4C1B35C91BE136080067EAF9 /* Device.swift in Sources */,
+				4C891A9B1BE2863700A7EE25 /* AccountCell.swift in Sources */,
 				4C1B35D61BE16B0B0067EAF9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -734,11 +753,12 @@
 		4C1B35DD1BE179520067EAF9 /* DomoArigato.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				4C891A9C1BE2B4C200A7EE25 /* DomoArigato#4.xcdatamodel */,
 				4C1B35DE1BE179520067EAF9 /* DomoArigato v2.xcdatamodel */,
 				4C1B35DF1BE179520067EAF9 /* DomoArigato#3.xcdatamodel */,
 				4C1B35E01BE179520067EAF9 /* DomoArigato.xcdatamodel */,
 			);
-			currentVersion = 4C1B35DF1BE179520067EAF9 /* DomoArigato#3.xcdatamodel */;
+			currentVersion = 4C891A9C1BE2B4C200A7EE25 /* DomoArigato#4.xcdatamodel */;
 			name = DomoArigato.xcdatamodeld;
 			path = ../Shared/DomoArigato.xcdatamodeld;
 			sourceTree = "<group>";

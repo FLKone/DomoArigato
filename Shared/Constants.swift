@@ -8,6 +8,8 @@
 
 let kAppGroup:String = "group.flkone.domoarigato"
 
-
 let kWidgetModelChanged:String = "DAWidgetModelChanged"
-let kWidgetModelChangedNotification:String = "DAWidgetModelChangedNotification"
+
+let kContextChangedNotification:String = "DAWidgetModelChangedNotification"
+
+let kAccountValueChanged:String = "DAAccountValueChangedNotification"

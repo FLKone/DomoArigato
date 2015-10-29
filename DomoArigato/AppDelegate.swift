@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if sharedDefaults.boolForKey(kWidgetModelChanged) {
             sharedDefaults.removeObjectForKey(kWidgetModelChanged)
             sharedDefaults.synchronize()
-            NSNotificationCenter.defaultCenter().postNotificationName(kWidgetModelChangedNotification, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(kContextChangedNotification, object: nil)
         }
     }
 
