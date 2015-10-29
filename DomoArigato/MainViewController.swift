@@ -24,6 +24,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var fetchedResultsController:NSFetchedResultsController {
         get {
             if (_fetchedResultsController == nil) {
+                //print("======= _fetchedResultsController = nil")
                 let devicesFetchRequest = NSFetchRequest(entityName: "Device")
 
                 let primarySortDescriptor = NSSortDescriptor(key: "type", ascending: true)
@@ -40,6 +41,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 frc.delegate = self
                 _fetchedResultsController = frc
             }
+            //print("======= _fetchedResultsController = not nil")
             return _fetchedResultsController!
         }
     }
@@ -60,7 +62,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.refreshData()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "contextShouldReset:", name: kWidgetModelChangedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "contextShouldReset:", name: kContextChangedNotification, object: nil)
     }
     
     deinit {
@@ -81,8 +83,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("contextShouldReset \(notification)")
         // Reset changed context
         self._fetchedResultsController = nil;
-        self.refreshData()
         self.context.reset()
+        self.refreshData()
     }
 
     // MARK: - View lifecycle
@@ -111,6 +113,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(fetchedResultsController.fetchRequest)
             try fetchedResultsController.performFetch()
             print("refreshComplete")
+            
             self.tableView.reloadData()
         } catch {
             print("An error occurred")
@@ -218,9 +221,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - UITableView DataSource
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        print("configure \(indexPath)")
         
         let device = fetchedResultsController.objectAtIndexPath(indexPath)
+        
+        print("configure \(indexPath) \(device.valueForKey("name")) = \(device.valueForKey("data"))")
+
         //cell.textLabel?.text = "\(device.valueForKey("name")!) \(device.valueForKey("isFavorite")!)"
         cell.textLabel?.text = device.valueForKey("name") as? String
         cell.detailTextLabel?.text = device.valueForKey("data") as? String
