@@ -4,5 +4,6 @@ use_frameworks!
 
 target 'DomoArigato' do
 	pod 'Alamofire', '~> 3.0'
+	pod 'CrittercismSDK'
 end
 

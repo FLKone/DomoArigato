@@ -1,10 +1,13 @@
 PODS:
   - Alamofire (3.0.1)
+  - CrittercismSDK (5.4.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
+  - CrittercismSDK
 
 SPEC CHECKSUMS:
   Alamofire: 2457e1b2e6c46bb05c3a598c542b7bfd08893775
+  CrittercismSDK: 6392d3628b4ea043a3d00ef745cf601a5049b394
 
 COCOAPODS: 0.39.0
