@@ -24,6 +24,11 @@
 ## How to use
 You need to create Config.swift file in `Shared` directory
 ``` swift
+//
+//  Config.swift
+//  DomoArigato
+//
+
 let kCrittercismAPI:String = "Crittercism API Key"
 ```
 
