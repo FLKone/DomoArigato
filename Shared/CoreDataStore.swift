@@ -134,7 +134,7 @@ public class CoreDataStore: NSObject {
 
     
     public class func saveContext (context: NSManagedObjectContext?) throws -> NSError? {
-        print("saveContext")
+        //print("saveContext")
         if context!.hasChanges {
             do {
                 try context!.save()

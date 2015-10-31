@@ -224,7 +224,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let device = fetchedResultsController.objectAtIndexPath(indexPath)
         
-        print("configure \(indexPath) \(device.valueForKey("name")) = \(device.valueForKey("data"))")
+        //print("configure \(indexPath) \(device.valueForKey("name")) = \(device.valueForKey("data"))")
 
         //cell.textLabel?.text = "\(device.valueForKey("name")!) \(device.valueForKey("isFavorite")!)"
         cell.textLabel?.text = device.valueForKey("name") as? String
@@ -304,14 +304,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             switch type {
                 case .Insert:
-                    print("Insert")
+                    //print("Insert")
                     self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Top)
-                case .Update:
-                    print("Update")
-                case .Move:
-                    print("Move")
+                case .Update: break
+                case .Move: break
                 case .Delete:
-                    print("Delete")
+                    //print("Delete")
                     self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Bottom)
             }
 
@@ -328,19 +326,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             switch type {
                 case .Insert:
-                    print("Insert")
+                    //print("Insert")
                     self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Top)
                 case .Update:
-                    print("Update")
+                    //print("Update")
                     let cell = self.tableView.cellForRowAtIndexPath(indexPath!)
                     self.configureCell(cell!, atIndexPath: indexPath!)
                     self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .None)
                 case .Move:
-                    print("Move")
+                    //print("Move")
                     self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
                     self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
                 case .Delete:
-                    print("Delete \(indexPath)")
+                    //print("Delete \(indexPath)")
                     self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Bottom)
             }
     }
