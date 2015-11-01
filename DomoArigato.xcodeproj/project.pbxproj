@@ -148,6 +148,15 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		4C24DBD01BE6233000269C0A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4C1B35D11BE1505B0067EAF9 /* CoreDataStore.swift */,
+				4C1B35CE1BE138D70067EAF9 /* Devices.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		4C27B28C1BD6BD5C002D4E90 = {
 			isa = PBXGroup;
 			children = (
@@ -207,11 +216,10 @@
 		4CBBC99F1BDAB3070003A8C8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4C891A981BE2861D00A7EE25 /* View */,
-				4C1B35C31BE135DA0067EAF9 /* Model */,
+				4C24DBD01BE6233000269C0A /* Helper */,
 				4C1B35CA1BE136110067EAF9 /* API */,
-				4C1B35CE1BE138D70067EAF9 /* Devices.swift */,
-				4C1B35D11BE1505B0067EAF9 /* CoreDataStore.swift */,
+				4C1B35C31BE135DA0067EAF9 /* Model */,
+				4C891A981BE2861D00A7EE25 /* View */,
 				4CA174251BDBCE7A007F6425 /* Utils.swift */,
 				4C1B35D41BE16B0B0067EAF9 /* Constants.swift */,
 				4C891A931BE2648000A7EE25 /* Config.swift */,
@@ -260,6 +268,7 @@
 				14590B2A56A470723E98181B /* Copy Pods Resources */,
 				4C9AC9E41BD6E98B0013519A /* Embed App Extensions */,
 				4C1B35D81BE174E70067EAF9 /* Run Script */,
+				4C24DBD41BE644B100269C0A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -598,6 +607,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -637,6 +647,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Shared/DomoArigato-Bridging-Header.h";

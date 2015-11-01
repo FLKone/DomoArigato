@@ -40,8 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Check if widget changed data..
         let sharedDefaults = NSUserDefaults(suiteName: kAppGroup)!
-        
+        NSLog("applicationDidBecomeActive")
         if sharedDefaults.boolForKey(kWidgetModelChanged) {
+            NSLog("kWidgetModelChanged")
+
             sharedDefaults.removeObjectForKey(kWidgetModelChanged)
             sharedDefaults.synchronize()
             NSNotificationCenter.defaultCenter().postNotificationName(kContextChangedNotification, object: nil)
