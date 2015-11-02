@@ -49,7 +49,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         Devices.sharedInstance.get(favorites: self.showFavoritesOnly, update: update) { (newDevicesController) -> () in
             
-            NSLog("reloadData newDevicesController \(newDevicesController.sections?.count)")
+            NSLog("reloadData newDevicesController \(newDevicesController)")
             self.devicesController = newDevicesController
             self.tableView.reloadData()
             

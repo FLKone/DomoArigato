@@ -51,7 +51,7 @@ public class Devices:NSObject {
         }
         
         NSLog("grouped = \((groupResults ? "type" : "no group"))")
-        
+        NSLog("context \(self.context)")
         let frc = NSFetchedResultsController(
             fetchRequest: devicesFetchRequest,
             managedObjectContext: self.context,
@@ -106,9 +106,14 @@ public class Devices:NSObject {
                         let obj = item as! NSDictionary
                         
                         let request = NSFetchRequest(entityName: "Device")
+                        
+                        print("looking for idx=\((obj.valueForKey("idx"))!)")
+                        
                         request.predicate = NSPredicate(format: "id == %@", argumentArray: [(obj.valueForKey("idx"))!])
                         request.returnsObjectsAsFaults = false
 
+                        // TODO: Delete removed devices (or hide)
+                        
                         do {
                             let result = try self.context.executeFetchRequest(request) as NSArray
                             
@@ -129,17 +134,6 @@ public class Devices:NSObject {
                                     NSLog("update > Updated Device = \(obj.valueForKey("Name")) = \(obj.valueForKey("Data")) | Fav=\(Bool(isFavorite))")
                                     device.setValue(Bool(isFavorite), forKey: "isFavorite")
                                 }
-                                
-                                //Save It
-                                self.context.performBlock {
-                                    do {
-                                        try CoreDataStore.saveContext(self.context)
-                                        
-                                    } catch let error as NSError  {
-                                        print("Could not save \(error), \(error.userInfo)")
-                                        
-                                    }
-                                }
                             }
                             else if result.count == 0 {
                                 //create new one
@@ -152,19 +146,16 @@ public class Devices:NSObject {
                                     NSLog("update > New Device = \(obj.valueForKey("Name")) = \(obj.valueForKey("Data")) | Fav=\(Bool(isFavorite))")
                                     device.setValue(Bool(isFavorite), forKey: "isFavorite")
                                 }
-                                
-                                //Save It
-                                self.context.performBlock {
-                                    do {
-                                        try CoreDataStore.saveContext(self.context)
-                                        
-                                    } catch let error as NSError  {
-                                        print("Could not save \(error), \(error.userInfo)")
-                                        
-                                    }
-                                }
+
                             }
                             
+                            //Save It
+                            do {
+                                try CoreDataStore.saveContext(self.context)
+                            } catch let error as NSError  {
+                                print("Could not save \(error), \(error.userInfo)")
+                                
+                            }
                             
                         } catch let error as NSError {
                             print("Fetch failed: \(error.localizedDescription)")
@@ -174,7 +165,7 @@ public class Devices:NSObject {
                     }
                     
                 }
-
+            
                 dispatch_async(dispatch_get_main_queue(),{
                     NSLog("update END, dispatch callback")
                     completion()
@@ -192,12 +183,14 @@ public class Devices:NSObject {
                     completion:(devicesController :NSFetchedResultsController) ->())
     {
         
-        NSLog(">>>>>> GET IN f=\(favoritesOnly) u=\(forceUpdate)")
+        NSLog(">>>>>> GET IN f=\(favoritesOnly) u=\(forceUpdate) g=\(groupResults)")
         
         if forceUpdate {
             NSLog("!! force Update")
             
             self.update {
+                NSLog(">>>>>> GET update IN f=\(favoritesOnly) u=\(forceUpdate) g=\(groupResults)")
+
                 self.fetch(favorites: favoritesOnly, grouped: groupResults, completion: { (devicesController) -> () in
                     completion(devicesController:devicesController)
                 })
