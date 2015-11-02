@@ -32,6 +32,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
 
         self.getDevices()
         self.preferredContentSize = CGSizeMake(self.view.frame.width, 94 + 8);
+        
+        // TODO: Redirect user to app if no account/devices available
+
     }
     
     
