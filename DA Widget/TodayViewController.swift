@@ -17,6 +17,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     //var devices = [NSManagedObject]()
     var devicesController = NSFetchedResultsController()
     var lastLoadDate: NSDate?
+    var widgetPerformed:Bool = false
+    var snapshotHandler:((NCUpdateResult) -> Void)?
+    var isLoading:Bool = false
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -36,43 +39,54 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         super.viewWillAppear(animated)
         NSLog("viewWillAppear \(self.lastLoadDate)")
         
-        self.getDevices(forceUpdate: true)
+        if !isLoading {
+            NSLog("getDevices from viewWillAppear")
+
+            self.isLoading = true
+            self.getDevices(forceUpdate: true)
+        }
     }
+    
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         NSLog("widgetPerformUpdateWithCompletionHandler")
+        self.widgetPerformed = true
+        self.snapshotHandler = completionHandler
         
-        self.getDevices()
-        completionHandler(NCUpdateResult.NewData)
+        if !isLoading {
+            NSLog("getDevices from Widget")
+            self.isLoading = true
+            self.getDevices(forceUpdate: true)
+        }
     }
     
-    func getDevices(sender: AnyObject? = nil, forceUpdate update: Bool = false) {
+    func getDevices(sender: AnyObject? = nil,
+                    forceUpdate update: Bool = false) {
+                        
         NSLog("getDevices update=\(update) sender=\(sender)")
-        
-        // Save in shared user defaults
-        let sharedDefaults = NSUserDefaults(suiteName: kAppGroup)!
-        sharedDefaults.setBool(true, forKey: kWidgetModelChanged)
-        sharedDefaults.synchronize()
 
         Devices.sharedInstance.get(favorites: true, update: update, grouped: false) { (newDevicesController) -> () in
             
             NSLog("reloadData newDevicesController \(newDevicesController.sections?.count)")
             self.devicesController = newDevicesController
             
-            if let sections = self.devicesController.sections {
-                
-                NSLog("sections.count \(sections.count)")
-                
-                if  sections.count > 0 {
-                    let currentSection = sections[0]
-                    print("current Obj = \(currentSection.numberOfObjects)")
-                }
+            self.lastLoadDate = NSDate()
+            
+            UIView.performWithoutAnimation {
+                self.collectionView.reloadData()
             }
             
-            self.lastLoadDate = NSDate()
-            self.collectionView.reloadSections(NSIndexSet(index: 0))
-            self.collectionView.reloadSections(NSIndexSet(index: 1))
-
+            // Save in shared user defaults
+            let sharedDefaults = NSUserDefaults(suiteName: kAppGroup)!
+            sharedDefaults.setBool(true, forKey: kWidgetModelChanged)
+            sharedDefaults.synchronize()
+            
+            self.isLoading = false
+            
+            if (self.snapshotHandler != nil) {
+                NSLog("snapshotHandler Called")
+                self.snapshotHandler!(NCUpdateResult.NewData)
+            }
         }
         
     }
@@ -126,7 +140,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     func configureCell(cell: UICollectionViewCell, atIndexPath indexPath: NSIndexPath, type: String) {
         let device = devicesController.objectAtIndexPath(indexPath)
         
-        NSLog("configureCell \(device)")
+        //NSLog("configureCell \(device)")
 
         let nameLabel = cell.viewWithTag(1) as? UILabel
         let dataLabel = cell.viewWithTag(2) as? UILabel
@@ -167,8 +181,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         NSLog("select \(indexPath)")
         
         if indexPath.section == 1 {
+            self.widgetPerformed = false
+            
+            collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.redColor()
+            UIView.animateWithDuration(0.5) { () -> Void in
+                collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.clearColor()
+            }
+            
             NSLog("make it crash")
-            NSLog("device \(self.devicesController.sections![666])") // this will crash, perdio.
+//            NSLog("device \(self.devicesController.sections![666])") // this will crash, perdio.
         }
         else {
             collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.lightGrayColor()
@@ -216,7 +237,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
             let build = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as! String
             
-            nameLabel!.text = "\(version) #\(build)"
+            nameLabel!.text = "\(version) #\(build) = widget=\(self.widgetPerformed)"
             if let lastdate = self.lastLoadDate {
                 dataLabel!.text = "\(lastdate.descriptionWithLocale(NSLocale.systemLocale()))"
             }
