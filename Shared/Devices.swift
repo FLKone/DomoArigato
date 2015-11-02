@@ -88,7 +88,21 @@ public class Devices:NSObject {
         
         NSLog("update IN")
         
-        Alamofire.request(.GET, "http://192.168.1.29:8080/json.htm?type=devices&filter=all&used=true&order=Name")
+        // TODO: Error management if no accounts
+
+        let accounts = NSManagedObject.findAllInContext("Account", context: self.context) as! [NSManagedObject]
+        
+        if accounts.count == 0 {
+            print("update IN > no accounts")
+            completion()
+            return
+        }
+        
+        print("update IN > accounts ok")
+
+        print(accounts)
+        
+        Alamofire.request(.GET, "http://\(accounts[0].valueForKey("ip")!):\(accounts[0].valueForKey("port")!)/json.htm?type=devices&filter=all&used=true&order=Name")
         .responseJSON { response in
             //print(response.request)  // original URL request
             //print(response.response) // URL response
