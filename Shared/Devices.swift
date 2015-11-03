@@ -100,11 +100,19 @@ public class Devices:NSObject {
         
         print("update IN > accounts ok")
 
-        print(accounts)
+        //print(accounts)
         
-        Alamofire.request(.GET, "http://\(accounts[0].valueForKey("ip")!):\(accounts[0].valueForKey("port")!)/json.htm?type=devices&filter=all&used=true&order=Name")
+        var URLScheme = "http"
+        
+        if let isSSL = accounts[0].valueForKey("ssl") as? Bool {
+            if isSSL {
+                URLScheme = "https"
+            }
+        }
+        
+        Alamofire.request(.GET, "\(URLScheme)://\(accounts[0].valueForKey("ip")!):\(accounts[0].valueForKey("port")!)/json.htm?type=devices&filter=all&used=true&order=Name")
         .responseJSON { response in
-            //print(response.request)  // original URL request
+            print(response.request)  // original URL request
             //print(response.response) // URL response
             //print(response.data)     // server data
             //print(response.result)   // result of response serialization
