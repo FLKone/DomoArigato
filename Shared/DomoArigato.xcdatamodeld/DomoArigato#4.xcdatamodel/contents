@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
-    <entity name="Account" syncable="YES">
+    <entity name="Account" representedClassName=".Account" syncable="YES">
         <attribute name="api" optional="YES" attributeType="Integer 64" defaultValueString="1" syncable="YES"/>
         <attribute name="haveLocal" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="ip" attributeType="String" syncable="YES"/>
@@ -14,7 +14,7 @@
         <attribute name="ssl" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Device" syncable="YES">
+    <entity name="Device" representedClassName=".Device" syncable="YES">
         <attribute name="data" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="data_old" optional="YES" attributeType="String" defaultValueString="-1" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
