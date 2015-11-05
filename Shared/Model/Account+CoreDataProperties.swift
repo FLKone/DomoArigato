@@ -16,7 +16,7 @@ extension Account {
 
     @NSManaged var api: Int64
     @NSManaged var haveLocal: Bool
-    @NSManaged var ip: String?
+    @NSManaged var ip: String
     @NSManaged var isActive: Bool
     @NSManaged var local_ip: String?
     @NSManaged var local_network: String?

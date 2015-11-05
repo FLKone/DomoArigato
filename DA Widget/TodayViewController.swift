@@ -141,7 +141,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
 
     
     func configureCell(cell: UICollectionViewCell, atIndexPath indexPath: NSIndexPath, type: String) {
-        let device = devicesController.objectAtIndexPath(indexPath)
+        let device = devicesController.objectAtIndexPath(indexPath) as! Device
         
         //NSLog("configureCell \(device)")
 
@@ -149,9 +149,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         let dataLabel = cell.viewWithTag(2) as? UILabel
         let typeImage = cell.viewWithTag(3) as? UIImageView
         
-        nameLabel?.text = device.valueForKey("name") as? String
+        nameLabel?.text = device.name
 
-        let data = device.valueForKey("data") as! String
+        let data = device.data!
 
         switch type {
             case "temperature" :
@@ -164,11 +164,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                 //typeImage?.image = UIImage(named: "SwitchOff")
                 //typeImage?.highlightedImage = UIImage(named: "SwitchOn")
                 
-                dataLabel?.text = device.valueForKey("data") as? String
+                dataLabel?.text = device.data
                 typeImage?.image = UIImage(named: ((data == "On") ? "SwitchOn" : "SwitchOff"))
 
             default:
-                dataLabel?.text = device.valueForKey("data") as? String
+                dataLabel?.text = device.data
 
         }
         
@@ -249,8 +249,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             return cell
         }
 
-        let device = self.devicesController.objectAtIndexPath(indexPath)
-        let type = device.valueForKey("type") as! String
+        let device = self.devicesController.objectAtIndexPath(indexPath) as! Device
+        let type = device.type!
         switch type {
             case "temperature" :
                 cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("TempCell", forIndexPath: indexPath)

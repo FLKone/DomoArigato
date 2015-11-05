@@ -90,7 +90,7 @@ public class Devices:NSObject {
         
         // TODO: Error management if no accounts
 
-        let accounts = NSManagedObject.findAllInContext("Account", context: self.context) as! [NSManagedObject]
+        let accounts = NSManagedObject.findAllInContext("Account", context: self.context) as! [Account]
         
         if accounts.count == 0 {
             print("update IN > no accounts")
@@ -102,15 +102,9 @@ public class Devices:NSObject {
 
         //print(accounts)
         
-        var URLScheme = "http"
+        let URLScheme = accounts[0].ssl ? "https" : "http"
         
-        if let isSSL = accounts[0].valueForKey("ssl") as? Bool {
-            if isSSL {
-                URLScheme = "https"
-            }
-        }
-        
-        Alamofire.request(.GET, "\(URLScheme)://\(accounts[0].valueForKey("ip")!):\(accounts[0].valueForKey("port")!)/json.htm?type=devices&filter=all&used=true&order=Name")
+        Alamofire.request(.GET, "\(URLScheme)://\(accounts[0].ip):\(accounts[0].port)/json.htm?type=devices&filter=all&used=true&order=Name")
         .responseJSON { response in
             print(response.request)  // original URL request
             //print(response.response) // URL response
@@ -139,38 +133,27 @@ public class Devices:NSObject {
                         do {
                             let result = try self.context.executeFetchRequest(request) as NSArray
                             
-                            //print("Fetch ok")
-                            if result.count == 2 {
-                                continue
-                            }
+                            var device:Device
                             
                             if result.count == 1 {
                                 //update
-                                let device = result.objectAtIndex(0) as! NSManagedObject
-                                
-                                device.setValue(obj.valueForKey("Name"), forKey: "name")
-                                device.setValue(obj.valueForKey("idx"), forKey: "id")
-                                device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
-                                device.setValue(obj.valueForKey("Data"), forKey: "data")
-                                if let isFavorite = obj.valueForKey("Favorite")?.integerValue {
-                                    NSLog("update > Updated Device = \(obj.valueForKey("Name")) = \(obj.valueForKey("Data")) | Fav=\(Bool(isFavorite))")
-                                    device.setValue(Bool(isFavorite), forKey: "isFavorite")
-                                }
+                                device = result.objectAtIndex(0) as! Device
                             }
-                            else if result.count == 0 {
+                            else  {
                                 //create new one
-                                let device = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.context)
-                                device.setValue(obj.valueForKey("Name"), forKey: "name")
-                                device.setValue(obj.valueForKey("idx"), forKey: "id")
-                                device.setValue(obj.valueForKey("TypeImg"), forKey: "type")
-                                device.setValue(obj.valueForKey("Data"), forKey: "data")
-                                if let isFavorite = obj.valueForKey("Favorite")?.integerValue {
-                                    NSLog("update > New Device = \(obj.valueForKey("Name")) = \(obj.valueForKey("Data")) | Fav=\(Bool(isFavorite))")
-                                    device.setValue(Bool(isFavorite), forKey: "isFavorite")
-                                }
-
+                                device = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.context) as! Device
                             }
+
+                            device.name = obj.valueForKey("Name") as? String
+                            device.id = obj.valueForKey("idx") as? String
+                            device.data = obj.valueForKey("Data") as? String
+                            device.type = obj.valueForKey("TypeImg") as? String
                             
+                            if let isFavorite = obj.valueForKey("Favorite")?.integerValue {
+                                NSLog("update > Updated Device = \(obj.valueForKey("Name")) = \(obj.valueForKey("Data")) | Fav=\(Bool(isFavorite))")
+                                device.isFavorite = Bool(isFavorite)
+                            }
+
                             //Save It
                             do {
                                 try CoreDataStore.saveContext(self.context)

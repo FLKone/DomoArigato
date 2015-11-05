@@ -18,8 +18,8 @@
 		4C1B35DB1BE178C60067EAF9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35DA1BE178C60067EAF9 /* SettingsViewController.swift */; };
 		4C1B35E11BE179520067EAF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1B35DC1BE179520067EAF9 /* Assets.xcassets */; };
 		4C1B35E21BE179520067EAF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1B35DC1BE179520067EAF9 /* Assets.xcassets */; };
-		4C1B35E31BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35DD1BE179520067EAF9 /* DomoArigato.xcdatamodeld */; };
-		4C1B35E41BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35DD1BE179520067EAF9 /* DomoArigato.xcdatamodeld */; };
+		4C25A1351BEBABB000A46F95 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35DD1BE179520067EAF9 /* DomoArigato.xcdatamodeld */; };
+		4C25A1361BEBABB000A46F95 /* DomoArigato.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35DD1BE179520067EAF9 /* DomoArigato.xcdatamodeld */; };
 		4C27B2991BD6BD5C002D4E90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */; };
 		4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27B29A1BD6BD5C002D4E90 /* MainViewController.swift */; };
 		4C27B29E1BD6BD5C002D4E90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */; };
@@ -525,10 +525,10 @@
 				4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */,
 				4C3A83121BEB93E100382259 /* Device+CoreDataProperties.swift in Sources */,
 				4C3A83161BEB990700382259 /* Account.swift in Sources */,
+				4C25A1351BEBABB000A46F95 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35CF1BE138D70067EAF9 /* Devices.swift in Sources */,
 				4C3A83181BEB990700382259 /* Device.swift in Sources */,
 				4C891A941BE2648000A7EE25 /* Config.swift in Sources */,
-				4C1B35E31BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35D51BE16B0B0067EAF9 /* Constants.swift in Sources */,
 				4C891A9A1BE2863700A7EE25 /* AccountCell.swift in Sources */,
 				4C27B2991BD6BD5C002D4E90 /* AppDelegate.swift in Sources */,
@@ -543,9 +543,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C3A83191BEB990700382259 /* Device.swift in Sources */,
+				4C25A1361BEBABB000A46F95 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35CD1BE136340067EAF9 /* Domoticz.swift in Sources */,
 				4C9AC9D91BD6E98B0013519A /* TodayViewController.swift in Sources */,
-				4C1B35E41BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35D01BE138D70067EAF9 /* Devices.swift in Sources */,
 				4CA174271BDBCE7A007F6425 /* Utils.swift in Sources */,
 				4C3A83171BEB990700382259 /* Account.swift in Sources */,

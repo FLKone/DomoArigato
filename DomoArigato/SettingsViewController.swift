@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     let context = CoreDataStore.mainQueueContext()    
-    var accounts = [NSManagedObject]()
+    var accounts = [Account]()
     
     @IBAction func unwindToSettings(segue: UIStoryboardSegue) {
         print("unwindToSettings \(segue)")
@@ -25,7 +25,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         
         self.title = "Settings"
-        self.accounts = NSManagedObject.findAllInContext("Account", context: self.context) as! [NSManagedObject]
+        self.accounts = NSManagedObject.findAllInContext("Account", context: self.context) as! [Account]
         
         print(self.accounts)
         
@@ -79,8 +79,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             if (self.accounts.count > 0 && indexPath.row == 0) {
                 let cell = self.tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath)
 
-                cell.textLabel!.text = "Domo \(self.accounts[indexPath.row].valueForKey("api")!)"
-                cell.detailTextLabel!.text = "IP \(self.accounts[indexPath.row].valueForKey("ip")!):\(self.accounts[indexPath.row].valueForKey("port")!)"
+                cell.textLabel!.text = "Domo \(self.accounts[indexPath.row].api)"
+                cell.detailTextLabel!.text = "IP \(self.accounts[indexPath.row].ip):\(self.accounts[indexPath.row].port)"
                 return cell
             }
             else if (self.accounts.count == 0 && indexPath.row == 0) {

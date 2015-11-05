@@ -77,26 +77,28 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("save")
         
         let entity =  NSEntityDescription.entityForName("Account", inManagedObjectContext:self.context)
-        let account = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.context)
-        
-        account.setValue(values["ip"],                      forKey: "ip")
-        account.setValue(Int(values["port"] as! Int),       forKey: "port")
+        let account = Account(entity: entity!, insertIntoManagedObjectContext: self.context)
+
+        account.ip = values["ip"] as! String
+        account.port = Int64(values["port"] as! Int)
         
         if let ssl = values["ssl"] as? Int {
-            account.setValue(Bool(ssl),                     forKey: "ssl")
+            account.ssl = Bool(ssl)
         }
-        
+
         if let selfsigned = values["selfsigned"] as? Int {
-            account.setValue(Bool(selfsigned),              forKey: "selfsigned")
+            account.selfsigned = Bool(selfsigned)
         }
         
         if let username = values["username"] as? String, let password = values["password"] as? String {
-            account.setValue(username, forKey: "username")
-            //account.setValue(password, forKey: "password")
-            account.setValue(true, forKey: "mustAuth")
+            account.username = username
+            // TODO: Storepassord in keychain
+            //account.password = password
+
+            account.mustAuth = true
         }
         else {
-            account.setValue(false, forKey: "mustAuth")
+            account.mustAuth = false
         }
 
         //Save It
