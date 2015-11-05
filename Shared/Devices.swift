@@ -10,6 +10,10 @@ import Foundation
 import CoreData
 import Alamofire
 
+public enum DeviceStatus {
+    case On
+    case Off
+}
 
 public class Devices:NSObject {
     static let sharedInstance = Devices()
@@ -212,5 +216,40 @@ public class Devices:NSObject {
         NSLog("<<<<<< GET OUT")
     }
 
+    public func put(deviceIndex: String,
+                    toStatus newStatus: Bool,
+                    completion:() ->())
+    {
+        let accounts = NSManagedObject.findAllInContext("Account", context: self.context) as! [Account]
+        
+        if accounts.count == 0 {
+            print("update IN > no accounts")
+            completion()
+            return
+        }
+        
+        print("update IN > accounts ok")
+        
+        //print(accounts)
+        
+        let URLScheme = accounts[0].ssl ? "https" : "http"
+        let SwitchCmd = newStatus ? "On" : "Off"
+        
+        Alamofire.request(.GET, "\(URLScheme)://\(accounts[0].ip):\(accounts[0].port)/json.htm?type=command&param=switchlight&idx=\(deviceIndex)&switchcmd=\(SwitchCmd)&level=0&passcode=")
+            .responseJSON { response in
+                print(response.request)  // original URL request
+                //print(response.response) // URL response
+                //print(response.data)     // server data
+                //print(response.result)   // result of response serialization
+                
+                if let JSON = response.result.value {
+                    
+                    print(JSON)
+                    completion()
+                }
+        }
+
+        
+    }
     
 }

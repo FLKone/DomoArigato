@@ -109,8 +109,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         switch curDevice.type! {
             case "lightbulb":
-                cell.firstTrigger = 0.25
-                cell.secondTrigger = 0.25
+                cell.firstTrigger = 0.30
+                cell.secondTrigger = 0.30
                 
                 if curDevice.data == "On" {
                     cell.setSwipeGestureWithView(checkOnView, color: grayColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
@@ -120,7 +120,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     });
                     
                     cell.setSwipeGestureWithView(checkOffView, color: greenColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
-                        print("switch action")
+                        print("switch action Off for \(curDevice.id)")
+                        Devices.sharedInstance.put(curDevice.id!, toStatus:false) {
+                            self.getDevices(forceUpdate: true)
+                        }
                         //self.changeCoffeeScore(coffeeScore!, newValue: NSNumber.numberWithInt(-1))
                         //return ()
                     });
@@ -133,7 +136,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     });
                     
                     cell.setSwipeGestureWithView(checkOnView, color: greenColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
-                        print("switch action")
+                        print("switch action On for \(curDevice.id)")
+                        Devices.sharedInstance.put(curDevice.id!, toStatus:true) {
+                            self.getDevices(forceUpdate: true)
+                        }
                         //self.changeCoffeeScore(coffeeScore!, newValue: NSNumber.numberWithInt(-1))
                         //return ()
                     });
