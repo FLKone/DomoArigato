@@ -41,4 +41,5 @@ let kCrittercismAPI:String = "Crittercism API Key"
 
 ## Credits
 - [Alamofire](https://github.com/Alamofire/Alamofire)
-- [Bool extension](https://gist.github.com/JadenGeller/1ff15b9958400f18f2c1)
+- [Bool extension _ JadenGeller](https://gist.github.com/JadenGeller/1ff15b9958400f18f2c1)
+- [MCSwipeTableViewCell _ alikaragoz](https://github.com/alikaragoz/MCSwipeTableViewCell)
