@@ -28,6 +28,10 @@
 		4C3A83111BEB93E100382259 /* Account+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A830E1BEB93E100382259 /* Account+CoreDataProperties.swift */; };
 		4C3A83121BEB93E100382259 /* Device+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A830F1BEB93E100382259 /* Device+CoreDataProperties.swift */; };
 		4C3A83131BEB93E100382259 /* Device+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A830F1BEB93E100382259 /* Device+CoreDataProperties.swift */; };
+		4C3A83161BEB990700382259 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A83141BEB990700382259 /* Account.swift */; };
+		4C3A83171BEB990700382259 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A83141BEB990700382259 /* Account.swift */; };
+		4C3A83181BEB990700382259 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A83151BEB990700382259 /* Device.swift */; };
+		4C3A83191BEB990700382259 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A83151BEB990700382259 /* Device.swift */; };
 		4C891A941BE2648000A7EE25 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C891A931BE2648000A7EE25 /* Config.swift */; };
 		4C891A951BE2648000A7EE25 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C891A931BE2648000A7EE25 /* Config.swift */; };
 		4C891A971BE2792C00A7EE25 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C891A961BE2792C00A7EE25 /* AccountViewController.swift */; };
@@ -91,6 +95,8 @@
 		4C27B2A71BD6BD5C002D4E90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C3A830E1BEB93E100382259 /* Account+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Account+CoreDataProperties.swift"; path = "Shared/Model/Account+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4C3A830F1BEB93E100382259 /* Device+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Device+CoreDataProperties.swift"; path = "Shared/Model/Device+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4C3A83141BEB990700382259 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Shared/Model/Account.swift; sourceTree = SOURCE_ROOT; };
+		4C3A83151BEB990700382259 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Shared/Model/Device.swift; sourceTree = SOURCE_ROOT; };
 		4C891A911BE2607000A7EE25 /* DomoArigato-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DomoArigato-Bridging-Header.h"; path = "Shared/DomoArigato-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		4C891A931BE2648000A7EE25 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Shared/Config.swift; sourceTree = SOURCE_ROOT; };
 		4C891A961BE2792C00A7EE25 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +140,8 @@
 		4C1B35C31BE135DA0067EAF9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4C3A83141BEB990700382259 /* Account.swift */,
+				4C3A83151BEB990700382259 /* Device.swift */,
 				4C3A830E1BEB93E100382259 /* Account+CoreDataProperties.swift */,
 				4C3A830F1BEB93E100382259 /* Device+CoreDataProperties.swift */,
 			);
@@ -516,7 +524,9 @@
 				4C1B35DB1BE178C60067EAF9 /* SettingsViewController.swift in Sources */,
 				4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */,
 				4C3A83121BEB93E100382259 /* Device+CoreDataProperties.swift in Sources */,
+				4C3A83161BEB990700382259 /* Account.swift in Sources */,
 				4C1B35CF1BE138D70067EAF9 /* Devices.swift in Sources */,
+				4C3A83181BEB990700382259 /* Device.swift in Sources */,
 				4C891A941BE2648000A7EE25 /* Config.swift in Sources */,
 				4C1B35E31BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35D51BE16B0B0067EAF9 /* Constants.swift in Sources */,
@@ -532,11 +542,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C3A83191BEB990700382259 /* Device.swift in Sources */,
 				4C1B35CD1BE136340067EAF9 /* Domoticz.swift in Sources */,
 				4C9AC9D91BD6E98B0013519A /* TodayViewController.swift in Sources */,
 				4C1B35E41BE179520067EAF9 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35D01BE138D70067EAF9 /* Devices.swift in Sources */,
 				4CA174271BDBCE7A007F6425 /* Utils.swift in Sources */,
+				4C3A83171BEB990700382259 /* Account.swift in Sources */,
 				4C3A83131BEB93E100382259 /* Device+CoreDataProperties.swift in Sources */,
 				4C3A83111BEB93E100382259 /* Account+CoreDataProperties.swift in Sources */,
 				4C1B35D31BE1505B0067EAF9 /* CoreDataStore.swift in Sources */,

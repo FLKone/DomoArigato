@@ -85,12 +85,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         
-        let device = devicesController.objectAtIndexPath(indexPath)
-        
-        NSLog("configure \(indexPath) \(device.valueForKey("name")) = \(device.valueForKey("data"))")
+        let curDevice = devicesController.objectAtIndexPath(indexPath) as! Device
 
-        cell.textLabel?.text = device.valueForKey("name") as? String
-        cell.detailTextLabel?.text = device.valueForKey("data") as? String
+        NSLog("configure \(indexPath) \(curDevice)")
+
+        cell.textLabel?.text = curDevice.name
+        cell.detailTextLabel?.text = curDevice.data
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
