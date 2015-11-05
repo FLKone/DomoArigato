@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0A805C1BEBC82C0055EDD7 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A805B1BEBC82C0055EDD7 /* Cells.swift */; };
 		4C1B35CC1BE136340067EAF9 /* Domoticz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35CB1BE136340067EAF9 /* Domoticz.swift */; };
 		4C1B35CD1BE136340067EAF9 /* Domoticz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35CB1BE136340067EAF9 /* Domoticz.swift */; };
 		4C1B35CF1BE138D70067EAF9 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B35CE1BE138D70067EAF9 /* Devices.swift */; };
@@ -75,6 +76,7 @@
 /* Begin PBXFileReference section */
 		1693719C06B274500CB07050 /* Pods-DomoArigato.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomoArigato.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DomoArigato/Pods-DomoArigato.debug.xcconfig"; sourceTree = "<group>"; };
 		1B13B3BA9EF2AE3E9863A37B /* Pods-DA Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DA Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DA Widget/Pods-DA Widget.debug.xcconfig"; sourceTree = "<group>"; };
+		4C0A805B1BEBC82C0055EDD7 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cells.swift; path = View/Cells.swift; sourceTree = "<group>"; };
 		4C1B35C21BE132710067EAF9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4C1B35CB1BE136340067EAF9 /* Domoticz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Domoticz.swift; path = Shared/API/Domoticz.swift; sourceTree = SOURCE_ROOT; };
 		4C1B35CE1BE138D70067EAF9 /* Devices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Devices.swift; path = Shared/Devices.swift; sourceTree = SOURCE_ROOT; };
@@ -137,6 +139,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C0A805A1BEBC8090055EDD7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C0A805B1BEBC82C0055EDD7 /* Cells.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		4C1B35C31BE135DA0067EAF9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +200,7 @@
 		4C27B2971BD6BD5C002D4E90 /* DomoArigato */ = {
 			isa = PBXGroup;
 			children = (
+				4C0A805A1BEBC8090055EDD7 /* View */,
 				4C27B2A41BD6BD5C002D4E90 /* LaunchScreen.storyboard */,
 				4C27B29C1BD6BD5C002D4E90 /* Main.storyboard */,
 				4C27B2981BD6BD5C002D4E90 /* AppDelegate.swift */,
@@ -525,6 +536,7 @@
 				4C27B29B1BD6BD5C002D4E90 /* MainViewController.swift in Sources */,
 				4C3A83121BEB93E100382259 /* Device+CoreDataProperties.swift in Sources */,
 				4C3A83161BEB990700382259 /* Account.swift in Sources */,
+				4C0A805C1BEBC82C0055EDD7 /* Cells.swift in Sources */,
 				4C25A1351BEBABB000A46F95 /* DomoArigato.xcdatamodeld in Sources */,
 				4C1B35CF1BE138D70067EAF9 /* Devices.swift in Sources */,
 				4C3A83181BEB990700382259 /* Device.swift in Sources */,

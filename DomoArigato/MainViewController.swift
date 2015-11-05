@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MCSwipeTableViewCell
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -83,14 +84,65 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - UITableView DataSource
     
-    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+    func configureCell(cell: DeviceSwitchCell, atIndexPath indexPath: NSIndexPath) {
         
         let curDevice = devicesController.objectAtIndexPath(indexPath) as! Device
 
         NSLog("configure \(indexPath) \(curDevice)")
+        
+        // Setting the default inactive state color to the tableView background color
+        cell.defaultColor = UIColor(red: 227.0 / 255.0, green: 227.0 / 255.0, blue: 227.0 / 255.0, alpha: 1.0)
+        
+        cell.label.text = curDevice.name
+        cell.data.text = curDevice.data
+        
+        let checkOnView = imageViewWithImageName("SwitchOn")
+        checkOnView.tintColor = UIColor.whiteColor()
+        
+        let checkOffView = imageViewWithImageName("SwitchOff")
+        checkOffView.tintColor = UIColor.whiteColor()
 
-        cell.textLabel?.text = curDevice.name
-        cell.detailTextLabel?.text = curDevice.data
+        
+        let greenColor = UIColor(red: 85.0/255.0, green: 213.0/255.0, blue: 80.0/255.0, alpha: 1.0)
+        let grayColor = UIColor(red: 227.0 / 255.0, green: 227.0 / 255.0, blue: 227.0 / 255.0, alpha: 1.0)
+        
+        
+        switch curDevice.type! {
+            case "lightbulb":
+                cell.firstTrigger = 0.25
+                cell.secondTrigger = 0.25
+                
+                if curDevice.data == "On" {
+                    cell.setSwipeGestureWithView(checkOnView, color: grayColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
+                        print("switch osef")
+                        //self.changeCoffeeScore(coffeeScore!, newValue: NSNumber.numberWithInt(-1))
+                        //return ()
+                    });
+                    
+                    cell.setSwipeGestureWithView(checkOffView, color: greenColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
+                        print("switch action")
+                        //self.changeCoffeeScore(coffeeScore!, newValue: NSNumber.numberWithInt(-1))
+                        //return ()
+                    });
+                }
+                else {
+                    cell.setSwipeGestureWithView(checkOffView, color: grayColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
+                        print("switch osef")
+                        //self.changeCoffeeScore(coffeeScore!, newValue: NSNumber.numberWithInt(-1))
+                        //return ()
+                    });
+                    
+                    cell.setSwipeGestureWithView(checkOnView, color: greenColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
+                        print("switch action")
+                        //self.changeCoffeeScore(coffeeScore!, newValue: NSNumber.numberWithInt(-1))
+                        //return ()
+                    });
+                }
+
+            default:
+                break
+        }
+
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -120,7 +172,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("DeviceSwitchCell", forIndexPath: indexPath) as! DeviceSwitchCell
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }

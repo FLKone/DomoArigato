@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 func delay(delay:Double, closure:()->()) {
     dispatch_after(
@@ -15,6 +16,13 @@ func delay(delay:Double, closure:()->()) {
             Int64(delay * Double(NSEC_PER_SEC))
         ),
         dispatch_get_main_queue(), closure)
+}
+
+func imageViewWithImageName(name: String) -> UIImageView {
+    let image = UIImage(named: name)
+    let imageView = UIImageView(image: image)
+    imageView.contentMode = .Center
+    return imageView
 }
 
 // From https://gist.github.com/JadenGeller/1ff15b9958400f18f2c1

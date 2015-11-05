@@ -4,7 +4,9 @@ use_frameworks!
 
 def da_pods
 	pod 'Alamofire', '~> 3.0'
-	pod 'CrittercismSDK'
+    pod 'MCSwipeTableViewCell', '~> 2.1.4'
+    pod 'CrittercismSDK'
+
 end
  
 target 'DomoArigato' do
