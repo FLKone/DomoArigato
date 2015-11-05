@@ -109,8 +109,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         switch curDevice.type! {
             case "lightbulb":
-                cell.firstTrigger = 0.30
-                cell.secondTrigger = 0.30
+                cell.firstTrigger = 0.11
+                cell.secondTrigger = 0.35
                 
                 if curDevice.data == "On" {
                     cell.setSwipeGestureWithView(checkOnView, color: grayColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
@@ -181,6 +181,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = self.tableView.dequeueReusableCellWithIdentifier("DeviceSwitchCell", forIndexPath: indexPath) as! DeviceSwitchCell
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
     }
 
 }
