@@ -68,7 +68,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                         
         NSLog("getDevices update=\(update) sender=\(sender)")
 
-        Devices.sharedInstance.get(favorites: true, update: update, grouped: false) { (newDevicesController) -> () in
+        Devices.sharedInstance.get(filter: .Today, update: update, grouped: false) { (newDevicesController) -> () in
             
             NSLog("reloadData newDevicesController \(newDevicesController.sections?.count)")
             self.devicesController = newDevicesController

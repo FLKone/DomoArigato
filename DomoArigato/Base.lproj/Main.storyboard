@@ -78,13 +78,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="ond-Kf-mJZ">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="gpj-aB-AaY">
-                            <rect key="frame" x="210" y="7" width="180" height="30"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="bar" selectedSegmentIndex="0" id="gpj-aB-AaY">
+                            <rect key="frame" x="190" y="7" width="220" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <segments>
                                 <segment title="All"/>
                                 <segment title="Favorites"/>
+                                <segment title="Widget"/>
                             </segments>
                             <connections>
                                 <action selector="filterDevices:" destination="BYZ-38-t0r" eventType="valueChanged" id="edH-MZ-txH"/>

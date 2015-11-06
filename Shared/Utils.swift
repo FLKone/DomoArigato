@@ -22,6 +22,8 @@ func imageViewWithImageName(name: String) -> UIImageView {
     let image = UIImage(named: name)
     let imageView = UIImageView(image: image)
     imageView.contentMode = .Center
+    imageView.tintColor = UIColor.whiteColor()
+    
     return imageView
 }
 

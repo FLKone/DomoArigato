@@ -6,6 +6,17 @@
 //  Copyright © 2015 FLKone. All rights reserved.
 //
 
+public enum DeviceFilter {
+    case All
+    case Favorites
+    case Today
+}
+
+
+public enum DeviceField {
+    case Today
+}
+
 let kAppGroup:String = "group.flkone.domoarigato"
 
 let kWidgetModelChanged:String = "DAWidgetModelChanged"

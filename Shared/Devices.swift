@@ -10,11 +10,6 @@ import Foundation
 import CoreData
 import Alamofire
 
-public enum DeviceStatus {
-    case On
-    case Off
-}
-
 public class Devices:NSObject {
     static let sharedInstance = Devices()
     private let context = CoreDataStore.privateQueueContext()
@@ -38,7 +33,7 @@ public class Devices:NSObject {
 
     // MARK: Privates
     
-    private func fetch( favorites favoritesOnly: Bool = false,
+    private func fetch( filter deviceFilter: DeviceFilter = .All,
                         grouped groupResults: Bool = true,
                         completion:(devicesController :NSFetchedResultsController) ->())
     {
@@ -50,8 +45,13 @@ public class Devices:NSObject {
         
         devicesFetchRequest.sortDescriptors = [primarySortDescriptor, secondarySortDescriptor]
         
-        if favoritesOnly {
-            devicesFetchRequest.predicate = NSPredicate(format: "(isFavorite == %@)", argumentArray: [true])
+        switch deviceFilter {
+            case .Favorites:
+                devicesFetchRequest.predicate = NSPredicate(format: "(isFavorite == %@)", argumentArray: [true])
+            case .Today:
+                devicesFetchRequest.predicate = NSPredicate(format: "(isToday == %@)", argumentArray: [true])
+            default:
+                break
         }
         
         NSLog("grouped = \((groupResults ? "type" : "no group"))")
@@ -186,21 +186,25 @@ public class Devices:NSObject {
 
     // MARK: Shared Public
     
-    public func get(favorites favoritesOnly: Bool = false,
+    /*
+        Get devices
+        force updated from webservice with update=true
+    */
+    public func get(filter deviceFilter: DeviceFilter = .All,
                     update forceUpdate: Bool = false,
                     grouped groupResults: Bool = true,
                     completion:(devicesController :NSFetchedResultsController) ->())
     {
         
-        NSLog(">>>>>> GET IN f=\(favoritesOnly) u=\(forceUpdate) g=\(groupResults)")
+        NSLog(">>>>>> GET IN f=\(deviceFilter) u=\(forceUpdate) g=\(groupResults)")
         
         if forceUpdate {
             NSLog("!! force Update")
             
             self.update {
-                NSLog(">>>>>> GET update IN f=\(favoritesOnly) u=\(forceUpdate) g=\(groupResults)")
+                NSLog(">>>>>> GET update IN f=\(deviceFilter) u=\(forceUpdate) g=\(groupResults)")
 
-                self.fetch(favorites: favoritesOnly, grouped: groupResults, completion: { (devicesController) -> () in
+                self.fetch(filter: deviceFilter, grouped: groupResults, completion: { (devicesController) -> () in
                     completion(devicesController:devicesController)
                 })
             }
@@ -208,7 +212,7 @@ public class Devices:NSObject {
         else {
             NSLog("!! fetch only")
             
-            self.fetch(favorites: favoritesOnly, grouped: groupResults, completion: { (devicesController) -> () in
+            self.fetch(filter: deviceFilter, grouped: groupResults, completion: { (devicesController) -> () in
                 completion(devicesController:devicesController)
             })
         }
@@ -216,6 +220,9 @@ public class Devices:NSObject {
         NSLog("<<<<<< GET OUT")
     }
 
+    /* 
+        Remotely send command to webservice 
+    */
     public func put(deviceIndex: String,
                     toStatus newStatus: Bool,
                     completion:() ->())
@@ -224,7 +231,9 @@ public class Devices:NSObject {
         
         if accounts.count == 0 {
             print("update IN > no accounts")
-            completion()
+            dispatch_async(dispatch_get_main_queue(),{
+                completion()
+            })
             return
         }
         
@@ -245,11 +254,71 @@ public class Devices:NSObject {
                 if let JSON = response.result.value {
                     
                     print(JSON)
-                    completion()
+                    dispatch_async(dispatch_get_main_queue(),{
+                        completion()
+                    })
                 }
-        }
+            }
 
         
     }
+    
+
+    /*
+        modify local fields, save within the app, not remotely
+    */
+    public func corePut(deviceIndex: String,
+                        field entityField: DeviceField,
+                        newValue value: AnyObject,
+                        completion:() ->())
+    {
+
+        
+        //Core Data
+        let request = NSFetchRequest(entityName: "Device")
+        
+        print("looking for idx=\(deviceIndex)")
+        
+        request.predicate = NSPredicate(format: "id == %@", argumentArray: [deviceIndex])
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try self.context.executeFetchRequest(request) as NSArray
+            
+            var device:Device
+            
+            if result.count == 1 {
+                //update
+                device = result.objectAtIndex(0) as! Device
+
+                switch entityField {
+                    case .Today:
+                        if let isToday = value as? Bool {
+                            NSLog("update > Updated Device = \(device.name) = oldT=\(device.isToday) | newT=\(Bool(isToday))")
+                            device.isToday = Bool(isToday)
+                    }
+                }
+            }
+            
+            //Save It
+            do {
+                try CoreDataStore.saveContext(self.context)
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+                
+            }
+            
+        } catch let error as NSError {
+            print("Fetch failed: \(error.localizedDescription)")
+            
+        }
+        
+        dispatch_async(dispatch_get_main_queue(),{
+            completion()
+        })
+        
+    }
+    
+    
     
 }
