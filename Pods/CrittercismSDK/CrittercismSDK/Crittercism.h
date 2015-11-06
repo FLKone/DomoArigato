@@ -136,6 +136,14 @@
 // of NSURLConnection and ASIHTTPRequest method calls.
 
 + (BOOL)logNetworkRequest:(NSString *)method
+                urlString:(NSString *)urlString
+                  latency:(NSTimeInterval)latency
+                bytesRead:(NSUInteger)bytesRead
+                bytesSent:(NSUInteger)bytesSent
+             responseCode:(NSInteger)responseCode
+                    error:(NSError *)error;
+
++ (BOOL)logNetworkRequest:(NSString *)method
                       url:(NSURL *)url
                   latency:(NSTimeInterval)latency
                 bytesRead:(NSUInteger)bytesRead

@@ -42,6 +42,12 @@
 // Default value: NO
 @property (nonatomic, assign) BOOL monitorWKWebView;
 
+// Determines whether Service Monitoring should monitor Watch Connectivity
+// two-way communications conduit between an iOS app and a WatchKit extension
+// on a paired Apple Watch.
+// Default value: YES
+@property (nonatomic, assign) BOOL monitorWCSession;
+
 // This flag determines wither Crittercism service monitoring is enabled at all.
 // If this flag is set to NO, then no instrumentation will be installed AND
 // the thread that sends service monitoring data will be disabled.

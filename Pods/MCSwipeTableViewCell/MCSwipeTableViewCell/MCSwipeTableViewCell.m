@@ -116,6 +116,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
     
     _firstTrigger = kMCStop1;
     _secondTrigger = kMCStop2;
+    _triggerColorFromZero = NO;
     
     _damping = kMCDamping;
     _velocity = kMCVelocity;
@@ -447,7 +448,9 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
     
     color = self.defaultColor ? self.defaultColor : [UIColor clearColor];
     
-    if (percentage > _firstTrigger && _modeForState1) {
+    CGFloat firstT = _triggerColorFromZero ? 0 : _firstTrigger;
+    
+    if (percentage > firstT && _modeForState1) {
         color = _color1;
     }
     
@@ -455,7 +458,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellDirection) {
         color = _color2;
     }
     
-    if (percentage < -_firstTrigger && _modeForState3) {
+    if (percentage < -firstT && _modeForState3) {
         color = _color3;
     }
     

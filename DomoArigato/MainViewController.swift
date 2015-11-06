@@ -11,7 +11,7 @@ import CoreData
 import MCSwipeTableViewCell
 
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MCSwipeTableViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -101,6 +101,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         // Swipe Actions
+
         let checkOnView = imageViewWithImageName("SwitchOn")
         checkOnView.tintColor = UIColor.whiteColor()
         
@@ -112,23 +113,25 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let grayColor = UIColor(red: 227.0 / 255.0, green: 227.0 / 255.0, blue: 227.0 / 255.0, alpha: 1.0)
         let redColor = UIColor(red:232.0 / 255.0, green:61.0 / 255.0, blue:14.0 / 255.0, alpha:1.0);
         let yellowColor = UIColor(red:254.0 / 255.0, green:217.0 / 255.0, blue:56.0 / 255.0, alpha:1.0);
-
+        let blueColor = UIColor(red: 0, green: 93.0/255.0, blue: 177.0/255.0, alpha: 1.0)
+        
         cell.firstTrigger = 0.11
         cell.secondTrigger = 0.35
-        
+        cell.triggerColorFromZero = true
         // Switch if lightbulb
         switch curDevice.type! {
             case "lightbulb":
 
                 
                 if curDevice.data == "On" {
-                    cell.setSwipeGestureWithView(checkOnView, color: grayColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
+
+                    cell.setSwipeGestureWithView(checkOnView, color: yellowColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
                         print("switch osef")
                         //self.changeCoffeeScore(coffeeScore!, newValue: NSNumber.numberWithInt(-1))
                         //return ()
                     });
                     
-                    cell.setSwipeGestureWithView(checkOffView, color: yellowColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
+                    cell.setSwipeGestureWithView(checkOffView, color: grayColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State4, completionBlock: { cell, state, mode in
                         print("switch action Off for \(curDevice.id)")
                         Devices.sharedInstance.put(curDevice.id!, toStatus:false) {
                             self.getDevices(forceUpdate: true)
@@ -138,6 +141,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     });
                 }
                 else {
+                    
                     cell.setSwipeGestureWithView(checkOffView, color: grayColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State3, completionBlock: { cell, state, mode in
                         print("switch osef")
                         //self.changeCoffeeScore(coffeeScore!, newValue: NSNumber.numberWithInt(-1))
@@ -161,13 +165,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Today Switch for All
         if curDevice.isToday == true {
-            cell.setSwipeGestureWithView(imageViewWithImageName("TodayRemoveOff"), color: grayColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State1, completionBlock: { cell, state, mode in
+
+            cell.setSwipeGestureWithView(imageViewWithImageName("TodayRemoveOff"), color: blueColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State1, completionBlock: { cell, state, mode in
                 print("today osef")
                 //self.changeCoffeeScore(coffeeScore!, newValue: NSNumber.numberWithInt(-1))
                 //return ()
             });
             
-            cell.setSwipeGestureWithView(imageViewWithImageName("TodayRemoveOn"), color: redColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State2, completionBlock: { cell, state, mode in
+            cell.setSwipeGestureWithView(imageViewWithImageName("TodayRemoveOn"), color: grayColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State2, completionBlock: { cell, state, mode in
                 print("today action Off for \(curDevice.id)")
                 Devices.sharedInstance.corePut(curDevice.id!, field:.Today, newValue:false) {
                     self.getDevices(forceUpdate: true)
@@ -183,7 +188,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 //return ()
             });
             
-            cell.setSwipeGestureWithView(imageViewWithImageName("TodayAddOn"), color: greenColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State2, completionBlock: { cell, state, mode in
+            cell.setSwipeGestureWithView(imageViewWithImageName("TodayAddOn"), color: blueColor, mode: MCSwipeTableViewCellMode.Switch, state:MCSwipeTableViewCellState.State2, completionBlock: { cell, state, mode in
                 print("today action On for \(curDevice.id)")
                 Devices.sharedInstance.corePut(curDevice.id!, field:.Today, newValue:true) {
                     self.getDevices(forceUpdate: true)

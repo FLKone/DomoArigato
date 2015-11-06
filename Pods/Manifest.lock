@@ -1,16 +1,27 @@
 PODS:
-  - Alamofire (3.1.0)
-  - CrittercismSDK (5.4.0)
+  - Alamofire (3.1.1)
+  - CrittercismSDK (5.4.5)
   - MCSwipeTableViewCell (2.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - CrittercismSDK
-  - MCSwipeTableViewCell (~> 2.1.4)
+  - MCSwipeTableViewCell (from `https://github.com/FLKone/MCSwipeTableViewCell.git`,
+    commit `c6474ad0bab933105c6f784a1c419c2021297b89`)
+
+EXTERNAL SOURCES:
+  MCSwipeTableViewCell:
+    :commit: c6474ad0bab933105c6f784a1c419c2021297b89
+    :git: https://github.com/FLKone/MCSwipeTableViewCell.git
+
+CHECKOUT OPTIONS:
+  MCSwipeTableViewCell:
+    :commit: c6474ad0bab933105c6f784a1c419c2021297b89
+    :git: https://github.com/FLKone/MCSwipeTableViewCell.git
 
 SPEC CHECKSUMS:
-  Alamofire: 415bd7f56197722978759078486689f7ef913dce
-  CrittercismSDK: 6392d3628b4ea043a3d00ef745cf601a5049b394
+  Alamofire: 9b0a7188b961a03914a99304488bd226b0e46c0e
+  CrittercismSDK: ac7fd22cd81d63a6398febc9f97427dca54edfc1
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
 
 COCOAPODS: 0.39.0
