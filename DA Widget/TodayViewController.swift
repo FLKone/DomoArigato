@@ -143,7 +143,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     func configureCell(cell: UICollectionViewCell, atIndexPath indexPath: NSIndexPath, type: String) {
         let device = devicesController.objectAtIndexPath(indexPath) as! Device
         
-        //NSLog("configureCell \(device)")
 
         let nameLabel = cell.viewWithTag(1) as? UILabel
         let dataLabel = cell.viewWithTag(2) as? UILabel
@@ -153,6 +152,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
 
         let data = device.data!
 
+        NSLog("configureCell type=\(type) = \(device)")
+
+        
         switch type {
             case "temperature" :
                 typeImage?.image = UIImage(named: "TemperatureOff")

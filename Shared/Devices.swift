@@ -142,6 +142,8 @@ public class Devices:NSObject {
                             if result.count == 1 {
                                 //update
                                 device = result.objectAtIndex(0) as! Device
+                                NSLog("old device \(device.description)")
+
                             }
                             else  {
                                 //create new one
@@ -153,9 +155,14 @@ public class Devices:NSObject {
                             device.data = obj.valueForKey("Data") as? String
                             device.type = obj.valueForKey("TypeImg") as? String
                             
+
+                            
                             if let isFavorite = obj.valueForKey("Favorite")?.integerValue {
-                                NSLog("update > Updated Device = \(obj.valueForKey("Name")) = \(obj.valueForKey("Data")) | Fav=\(Bool(isFavorite))")
                                 device.isFavorite = Bool(isFavorite)
+                                NSLog("update-1 > Updated Device = \(obj.valueForKey("Name")) = \(obj.valueForKey("Data")) | Fav=\(Bool(isFavorite))")
+                            }
+                            else {
+                                NSLog("update-2 > Updated Device = \(obj.valueForKey("Name")) = \(obj.valueForKey("Data"))")
                             }
 
                             //Save It

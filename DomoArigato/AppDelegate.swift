@@ -21,14 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Slide)
         //UINavigationBar.appearance().barTintColor = UIColor(red: 0, green: 143.0/255.0, blue: 211.0/255.0, alpha: 1.0)
-        UINavigationBar.appearance().barTintColor = UIColor(red: 0, green: 93.0/255.0, blue: 177.0/255.0, alpha: 1.0)
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
+        //UINavigationBar.appearance().barTintColor = UIColor(red: 0, green: 93.0/255.0, blue: 177.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor(red: 0, green: 93.0/255.0, blue: 177.0/255.0, alpha: 1.0)
         
         let barShadow: NSShadow = NSShadow()
         barShadow.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
         barShadow.shadowOffset = CGSize(width: 0, height: 1)
         
-        let textTitleOptions = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        let textTitleOptions = [NSForegroundColorAttributeName: UIColor(red: 0, green: 93.0/255.0, blue: 177.0/255.0, alpha: 1.0)]
         UINavigationBar.appearance().titleTextAttributes = textTitleOptions
 
         
